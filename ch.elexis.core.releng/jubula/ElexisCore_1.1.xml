@@ -8,8 +8,8 @@
     <active>true</active>
     <taskId xsi:nil="true"/>
     <defaultLanguage>de_DE</defaultLanguage>
-    <projectLanguage>de_DE</projectLanguage>
     <projectLanguage>fr_CH</projectLanguage>
+    <projectLanguage>de_DE</projectLanguage>
     <namedTestData name="PATIENTEN">
       <testData>
         <row rowCount="1">
@@ -442,9 +442,9 @@
         <uniqueId>b30fd1aeb058476f904d046faec74a06</uniqueId>
       </parameterDescription>
     </namedTestData>
-    <aut id="ID_A_188456">
+    <aut id="ID_A_22689">
       <name>elexis</name>
-      <config id="ID_C_188654">
+      <config id="ID_C_22897">
         <name>elexis-2.1.7@localhost</name>
         <classname/>
         <classpath/>
@@ -522,7 +522,7 @@
           <value>/home/niklaus/elexis/bin/elexis-2.1.7.20140306/</value>
         </confAttrMapEntry>
       </config>
-      <config id="ID_C_188655">
+      <config id="ID_C_22899">
         <name>elexis-linux@localhost</name>
         <classname/>
         <classpath/>
@@ -600,7 +600,7 @@
           <value>/opt/elexis-3-jubula-8.0/elexis-3-core/ch.elexis.core.p2site/target/products/ch.elexis.core.application.ElexisApp/linux/gtk/x86_64</value>
         </confAttrMapEntry>
       </config>
-      <config id="ID_C_188656">
+      <config id="ID_C_22898">
         <name>elexis-tst-upgrade@localhost</name>
         <classname/>
         <classpath/>
@@ -678,7 +678,7 @@
           <value>/opt/elexis-3-jubula-8.0/elexis-3-core/ch.elexis.core.releng/jubula/sw-upgrade-tst-1/</value>
         </confAttrMapEntry>
       </config>
-      <config id="ID_C_224161">
+      <config id="ID_C_22900">
         <name>medelexis-3-app@localhost</name>
         <classname/>
         <classpath/>
@@ -1371,6 +1371,47 @@
             <type xsi:nil="true"/>
             <logicalName>9683c69fdf754a53a7ea41c79be7aff3</logicalName>
           </association>
+          <association>
+            <technicalName>
+              <neighbour>org.eclipse.swt.widgets.ToolItem_1</neighbour>
+              <neighbour>org.eclipse.swt.widgets.ToolItem_2</neighbour>
+              <neighbour>org.eclipse.swt.widgets.ToolItem_3</neighbour>
+              <componentClassName>org.eclipse.swt.widgets.ToolItem</componentClassName>
+              <supportedClassName>org.eclipse.swt.widgets.ToolItem</supportedClassName>
+              <hierarchyName>org.eclipse.swt.widgets.Shell_1</hierarchyName>
+              <hierarchyName>org.eclipse.swt.widgets.Composite_1</hierarchyName>
+              <hierarchyName>org.eclipse.swt.widgets.Composite_1</hierarchyName>
+              <hierarchyName>ch.elexis.artikelview</hierarchyName>
+              <hierarchyName>org.eclipse.swt.widgets.Composite_1</hierarchyName>
+              <hierarchyName>org.eclipse.swt.custom.CTabFolder_1</hierarchyName>
+              <hierarchyName>ch.elexis.core.ui.views.artikel.ArtikelView$MasterDetailsPage_1</hierarchyName>
+              <hierarchyName>org.eclipse.swt.custom.SashForm_1</hierarchyName>
+              <hierarchyName>org.eclipse.swt.widgets.Composite_1</hierarchyName>
+              <hierarchyName>ch.elexis.core.ui.selectors.SelectorPanel_1</hierarchyName>
+              <hierarchyName>org.eclipse.swt.widgets.ToolBar_1</hierarchyName>
+              <hierarchyName>org.eclipse.swt.widgets.ToolItem_2</hierarchyName>
+              <alternativeDisplayName>Toolbar Item</alternativeDisplayName>
+            </technicalName>
+            <type xsi:nil="true"/>
+            <logicalName>a153cc93723e4c429a6e446e2fd2d7a6</logicalName>
+          </association>
+          <association>
+            <technicalName>
+              <neighbour>org.eclipse.swt.widgets.Label_1</neighbour>
+              <neighbour>org.eclipse.swt.widgets.Text_1</neighbour>
+              <componentClassName>org.eclipse.swt.widgets.Button</componentClassName>
+              <supportedClassName>org.eclipse.swt.widgets.Button</supportedClassName>
+              <hierarchyName>org.eclipse.swt.widgets.Shell_1</hierarchyName>
+              <hierarchyName>org.eclipse.swt.widgets.Shell_1</hierarchyName>
+              <hierarchyName>org.eclipse.swt.widgets.Composite_1</hierarchyName>
+              <hierarchyName>org.eclipse.swt.widgets.Composite_1</hierarchyName>
+              <hierarchyName>ch.elexis.core.ui.util.ImporterPage$FileBasedImporter_1</hierarchyName>
+              <hierarchyName>org.eclipse.swt.widgets.Button_1</hierarchyName>
+              <alternativeDisplayName>Button Component ("Suchen...")</alternativeDisplayName>
+            </technicalName>
+            <type xsi:nil="true"/>
+            <logicalName>ffe2184701a047a1bce06878d15a3505</logicalName>
+          </association>
           <category>
             <name>Patients</name>
             <association>
@@ -1759,6 +1800,23 @@
                 </technicalName>
                 <type xsi:nil="true"/>
                 <logicalName>26480b65928c43d383190be3a5d97df1</logicalName>
+              </association>
+              <association>
+                <technicalName>
+                  <neighbour>org.eclipse.swt.widgets.Button_1</neighbour>
+                  <neighbour>org.eclipse.swt.widgets.Label_1</neighbour>
+                  <componentClassName>org.eclipse.swt.widgets.Button</componentClassName>
+                  <supportedClassName>org.eclipse.swt.widgets.Button</supportedClassName>
+                  <hierarchyName>org.eclipse.swt.widgets.Shell_1</hierarchyName>
+                  <hierarchyName>org.eclipse.swt.widgets.Shell_1</hierarchyName>
+                  <hierarchyName>org.eclipse.swt.widgets.Composite_1</hierarchyName>
+                  <hierarchyName>org.eclipse.swt.widgets.Composite_2</hierarchyName>
+                  <hierarchyName>org.eclipse.swt.widgets.Composite_1</hierarchyName>
+                  <hierarchyName>dialog.button.ok</hierarchyName>
+                  <alternativeDisplayName>dialog.button.ok ("OK")</alternativeDisplayName>
+                </technicalName>
+                <type xsi:nil="true"/>
+                <logicalName>8d605310e1ca415fb5af2b77ebb8d058</logicalName>
               </association>
             </category>
             <category>
@@ -2526,22 +2584,6 @@
                 </technicalName>
                 <type xsi:nil="true"/>
               </association>
-              <association>
-                <technicalName>
-                  <neighbour>org.eclipse.swt.widgets.Button_1</neighbour>
-                  <neighbour>org.eclipse.swt.widgets.Label_1</neighbour>
-                  <componentClassName>org.eclipse.swt.widgets.Button</componentClassName>
-                  <supportedClassName>org.eclipse.swt.widgets.Button</supportedClassName>
-                  <hierarchyName>org.eclipse.swt.widgets.Shell_1</hierarchyName>
-                  <hierarchyName>org.eclipse.swt.widgets.Shell_1</hierarchyName>
-                  <hierarchyName>org.eclipse.swt.widgets.Composite_1</hierarchyName>
-                  <hierarchyName>org.eclipse.swt.widgets.Composite_2</hierarchyName>
-                  <hierarchyName>org.eclipse.swt.widgets.Composite_1</hierarchyName>
-                  <hierarchyName>dialog.button.ok</hierarchyName>
-                  <alternativeDisplayName>dialog.button.ok ("OK")</alternativeDisplayName>
-                </technicalName>
-                <type xsi:nil="true"/>
-              </association>
             </category>
           </category>
         </unmappedTechnical>
@@ -3290,7 +3332,6 @@
               </testdata>
               <datafile xsi:nil="true"/>
               <testcaseGuid>033fbd0ac8bc44c28fd967f39513eef3</testcaseGuid>
-              <projectGuid>b80640b58118457d83cc1cdfdd69410e</projectGuid>
               <hasOwnTestdata>true</hasOwnTestdata>
               <overriddenNames>
                 <propagated>false</propagated>
@@ -3345,7 +3386,6 @@
             <taskId xsi:nil="true"/>
             <datafile xsi:nil="true"/>
             <testcaseGuid>83d26ab988824e82894aa3e2d7c3f7c0</testcaseGuid>
-            <projectGuid>b80640b58118457d83cc1cdfdd69410e</projectGuid>
             <hasOwnTestdata>false</hasOwnTestdata>
             <eventType>TestErrorEvent.Action</eventType>
             <reentryProperty>break</reentryProperty>
@@ -3359,7 +3399,6 @@
             <taskId xsi:nil="true"/>
             <datafile xsi:nil="true"/>
             <testcaseGuid>94647e1be2874050b43a259e99b692f7</testcaseGuid>
-            <projectGuid>b80640b58118457d83cc1cdfdd69410e</projectGuid>
             <hasOwnTestdata>false</hasOwnTestdata>
             <overriddenNames>
               <propagated>false</propagated>
@@ -4258,7 +4297,6 @@
               <testdata/>
               <datafile xsi:nil="true"/>
               <testcaseGuid>21d5642e2f0440e493728c413a3258ec</testcaseGuid>
-              <projectGuid>b80640b58118457d83cc1cdfdd69410e</projectGuid>
               <hasOwnTestdata>true</hasOwnTestdata>
             </usedTestcase>
           </teststep>
@@ -6015,7 +6053,6 @@
               <taskId xsi:nil="true"/>
               <datafile xsi:nil="true"/>
               <testcaseGuid>94647e1be2874050b43a259e99b692f7</testcaseGuid>
-              <projectGuid>b80640b58118457d83cc1cdfdd69410e</projectGuid>
               <hasOwnTestdata>false</hasOwnTestdata>
               <overriddenNames>
                 <propagated>true</propagated>
@@ -6355,7 +6392,6 @@
               <taskId xsi:nil="true"/>
               <datafile xsi:nil="true"/>
               <testcaseGuid>986ae047b37f4acba827bacb341a178e</testcaseGuid>
-              <projectGuid>b80640b58118457d83cc1cdfdd69410e</projectGuid>
               <hasOwnTestdata>false</hasOwnTestdata>
             </usedTestcase>
           </teststep>
@@ -11330,7 +11366,6 @@
               <taskId xsi:nil="true"/>
               <datafile xsi:nil="true"/>
               <testcaseGuid>3c8e68c1ad044bddb8efcb849e40e4cf</testcaseGuid>
-              <projectGuid>b80640b58118457d83cc1cdfdd69410e</projectGuid>
               <hasOwnTestdata>false</hasOwnTestdata>
             </usedTestcase>
           </teststep>
@@ -11344,7 +11379,6 @@
               <taskId xsi:nil="true"/>
               <datafile xsi:nil="true"/>
               <testcaseGuid>5a034cd013b74493bbfbe153cfcd18d1</testcaseGuid>
-              <projectGuid>b80640b58118457d83cc1cdfdd69410e</projectGuid>
               <hasOwnTestdata>false</hasOwnTestdata>
             </usedTestcase>
           </teststep>
@@ -11410,6 +11444,84 @@
           <datafile xsi:nil="true"/>
           <teststep>
             <usedTestcase>
+              <name>expand filename with $ARTIKEL_STAMM</name>
+              <comment xsi:nil="true"/>
+              <GUID>23c8e12a247a494093d18a8705b7f4ec</GUID>
+              <generated>false</generated>
+              <active>true</active>
+              <taskId xsi:nil="true"/>
+              <testdata>
+                <row rowCount="1">
+                  <data columnCount="1">
+                    <data>
+                      <language>de_DE</language>
+                      <value>FILENAME_IN_HOME</value>
+                    </data>
+                  </data>
+                  <data columnCount="2">
+                    <data>
+                      <language>de_DE</language>
+                      <value>$ARTIKEL_STAMM</value>
+                    </data>
+                  </data>
+                </row>
+                <uniqueIds>8ab6b0831c7549be011c754c9dc60004</uniqueIds>
+                <uniqueIds>8ab6b0831c7549be011c754cb8cc0005</uniqueIds>
+              </testdata>
+              <datafile xsi:nil="true"/>
+              <testcaseGuid>8ab6b0831c7549be011c754b6e9a0002</testcaseGuid>
+              <projectGuid>8ab6b083150339b501150364afb90435</projectGuid>
+              <hasOwnTestdata>true</hasOwnTestdata>
+            </usedTestcase>
+          </teststep>
+          <teststep>
+            <usedTestcase>
+              <name>logger $FILENAME_IN_HOME</name>
+              <comment xsi:nil="true"/>
+              <GUID>2ea5cbb43f654d7e888ba5d5382a2841</GUID>
+              <generated>false</generated>
+              <active>false</active>
+              <taskId xsi:nil="true"/>
+              <testdata>
+                <row rowCount="1">
+                  <data columnCount="1">
+                    <data>
+                      <language>de_DE</language>
+                      <value>logger Starting artikelimport $ARTIKEL_STAMM</value>
+                    </data>
+                  </data>
+                  <data columnCount="2">
+                    <data>
+                      <language>de_DE</language>
+                      <value>0</value>
+                    </data>
+                  </data>
+                  <data columnCount="3">
+                    <data>
+                      <language>de_DE</language>
+                      <value>true</value>
+                    </data>
+                  </data>
+                  <data columnCount="4">
+                    <data>
+                      <language>de_DE</language>
+                      <value>1000</value>
+                    </data>
+                  </data>
+                </row>
+                <uniqueIds>8ab6b08316c3bbe20116c3bf02fd000e</uniqueIds>
+                <uniqueIds>8ab6b08316c3bbe20116c3bf1a3e000f</uniqueIds>
+                <uniqueIds>8ab6b083181d393b01181d8bb901005a</uniqueIds>
+                <uniqueIds>8ab6b083181d393b01181d8beaaf005c</uniqueIds>
+              </testdata>
+              <datafile xsi:nil="true"/>
+              <testcaseGuid>8ab6b08316c3bbe20116c3bec817000c</testcaseGuid>
+              <projectGuid>8ab6b083150339b501150364afb90435</projectGuid>
+              <hasOwnTestdata>true</hasOwnTestdata>
+            </usedTestcase>
+          </teststep>
+          <teststep>
+            <usedTestcase>
               <name>Open Artikel perspective</name>
               <comment xsi:nil="true"/>
               <GUID>2ffc888916774bd4855f18aa0c2b1a76</GUID>
@@ -11466,7 +11578,6 @@
               </testdata>
               <datafile xsi:nil="true"/>
               <testcaseGuid>7eb5f0389f0344989f68e011800b7a3e</testcaseGuid>
-              <projectGuid>b80640b58118457d83cc1cdfdd69410e</projectGuid>
               <hasOwnTestdata>true</hasOwnTestdata>
             </usedTestcase>
           </teststep>
@@ -11480,7 +11591,6 @@
               <taskId xsi:nil="true"/>
               <datafile xsi:nil="true"/>
               <testcaseGuid>3ca416c67277453ca1c6d724ff916ec0</testcaseGuid>
-              <projectGuid>b80640b58118457d83cc1cdfdd69410e</projectGuid>
               <hasOwnTestdata>false</hasOwnTestdata>
             </usedTestcase>
           </teststep>
@@ -11542,7 +11652,6 @@
               </testdata>
               <datafile xsi:nil="true"/>
               <testcaseGuid>7eb5f0389f0344989f68e011800b7a3e</testcaseGuid>
-              <projectGuid>b80640b58118457d83cc1cdfdd69410e</projectGuid>
               <hasOwnTestdata>true</hasOwnTestdata>
             </usedTestcase>
           </teststep>
@@ -11604,7 +11713,6 @@
               </testdata>
               <datafile xsi:nil="true"/>
               <testcaseGuid>7eb5f0389f0344989f68e011800b7a3e</testcaseGuid>
-              <projectGuid>b80640b58118457d83cc1cdfdd69410e</projectGuid>
               <hasOwnTestdata>true</hasOwnTestdata>
             </usedTestcase>
           </teststep>
@@ -11673,7 +11781,6 @@
               </testdata>
               <datafile xsi:nil="true"/>
               <testcaseGuid>64f30f14e54247d489e19bae7212fde6</testcaseGuid>
-              <projectGuid>b80640b58118457d83cc1cdfdd69410e</projectGuid>
               <hasOwnTestdata>true</hasOwnTestdata>
               <overriddenNames>
                 <propagated>false</propagated>
@@ -11799,9 +11906,9 @@
           </teststep>
           <teststep>
             <usedTestcase>
-              <name>Enter filenname to import</name>
+              <name>Copy filename to clipboard</name>
               <comment xsi:nil="true"/>
-              <GUID>258bf2f184b347baa8d4bd5e58fc199c</GUID>
+              <GUID>86a9e7d283904b70b2e2982ab0c3771e</GUID>
               <generated>false</generated>
               <active>true</active>
               <taskId xsi:nil="true"/>
@@ -11810,7 +11917,102 @@
                   <data columnCount="1">
                     <data>
                       <language>de_DE</language>
-                      <value>=a41daf8e246e4251ac57829d882763c0</value>
+                      <value>$ARTIKEL_STAMM</value>
+                    </data>
+                  </data>
+                </row>
+                <uniqueIds>8ab6b083225416bc012254a0d58c000e</uniqueIds>
+              </testdata>
+              <datafile xsi:nil="true"/>
+              <testcaseGuid>8ab6b083225416bc012254a0450a000c</testcaseGuid>
+              <projectGuid>8ab6b083150339b501150364afb90435</projectGuid>
+              <hasOwnTestdata>true</hasOwnTestdata>
+            </usedTestcase>
+          </teststep>
+          <teststep>
+            <usedTestcase>
+              <name>Select all (old value)</name>
+              <comment xsi:nil="true"/>
+              <GUID>ac03fd5aca26462bafeecdd7541aa71d</GUID>
+              <generated>false</generated>
+              <active>true</active>
+              <taskId xsi:nil="true"/>
+              <datafile xsi:nil="true"/>
+              <testcaseGuid>8ab6b083150339b501150364afe807dc</testcaseGuid>
+              <projectGuid>8ab6b083150339b501150364afb90435</projectGuid>
+              <hasOwnTestdata>false</hasOwnTestdata>
+            </usedTestcase>
+          </teststep>
+          <teststep>
+            <usedTestcase>
+              <name>Delete</name>
+              <comment xsi:nil="true"/>
+              <GUID>ef77dfdb40cf42a5833ea2a90b6107ff</GUID>
+              <generated>false</generated>
+              <active>true</active>
+              <taskId xsi:nil="true"/>
+              <datafile xsi:nil="true"/>
+              <testcaseGuid>8ab6b083150339b501150364afe807c7</testcaseGuid>
+              <projectGuid>8ab6b083150339b501150364afb90435</projectGuid>
+              <hasOwnTestdata>false</hasOwnTestdata>
+            </usedTestcase>
+          </teststep>
+          <teststep>
+            <usedTestcase>
+              <name/>
+              <comment xsi:nil="true"/>
+              <GUID>defa842b36c54b4e9d732e572ba651c8</GUID>
+              <generated>false</generated>
+              <active>true</active>
+              <taskId xsi:nil="true"/>
+              <datafile xsi:nil="true"/>
+              <testcaseGuid>2cc82a65d808499fb219408a83968851</testcaseGuid>
+              <projectGuid>b80640b58118457d83cc1cdfdd69410e</projectGuid>
+              <hasOwnTestdata>false</hasOwnTestdata>
+            </usedTestcase>
+          </teststep>
+          <teststep>
+            <usedTestcase>
+              <name>Ctrl-V is more reliable (and faster) than entering text</name>
+              <comment xsi:nil="true"/>
+              <GUID>0317604534434005974fd20027f3663d</GUID>
+              <generated>false</generated>
+              <active>true</active>
+              <taskId xsi:nil="true"/>
+              <datafile xsi:nil="true"/>
+              <testcaseGuid>8ab6b083150339b501150364afe807de</testcaseGuid>
+              <projectGuid>8ab6b083150339b501150364afb90435</projectGuid>
+              <hasOwnTestdata>false</hasOwnTestdata>
+            </usedTestcase>
+          </teststep>
+          <teststep>
+            <usedTestcase>
+              <name/>
+              <comment xsi:nil="true"/>
+              <GUID>6d9894ffb67f489ebe004e4b28c75add</GUID>
+              <generated>false</generated>
+              <active>true</active>
+              <taskId xsi:nil="true"/>
+              <datafile xsi:nil="true"/>
+              <testcaseGuid>2cc82a65d808499fb219408a83968851</testcaseGuid>
+              <projectGuid>b80640b58118457d83cc1cdfdd69410e</projectGuid>
+              <hasOwnTestdata>false</hasOwnTestdata>
+            </usedTestcase>
+          </teststep>
+          <teststep>
+            <usedTestcase>
+              <name>Enter filenname to import</name>
+              <comment xsi:nil="true"/>
+              <GUID>258bf2f184b347baa8d4bd5e58fc199c</GUID>
+              <generated>false</generated>
+              <active>false</active>
+              <taskId xsi:nil="true"/>
+              <testdata>
+                <row rowCount="1">
+                  <data columnCount="1">
+                    <data>
+                      <language>de_DE</language>
+                      <value>$ARTIKEL_STAMM</value>
                     </data>
                   </data>
                 </row>
@@ -12014,8 +12216,176 @@
               <taskId xsi:nil="true"/>
               <datafile xsi:nil="true"/>
               <testcaseGuid>2cc82a65d808499fb219408a83968851</testcaseGuid>
-              <projectGuid>b80640b58118457d83cc1cdfdd69410e</projectGuid>
               <hasOwnTestdata>false</hasOwnTestdata>
+            </usedTestcase>
+          </teststep>
+          <teststep>
+            <usedTestcase>
+              <name>Select first article</name>
+              <comment xsi:nil="true"/>
+              <GUID>d2968ea1c648414b8c483b650c2ed6b8</GUID>
+              <generated>false</generated>
+              <active>true</active>
+              <taskId xsi:nil="true"/>
+              <testdata>
+                <row rowCount="1">
+                  <data columnCount="1">
+                    <data>
+                      <language>de_DE</language>
+                      <value>1</value>
+                    </data>
+                  </data>
+                  <data columnCount="2">
+                    <data>
+                      <language>de_DE</language>
+                      <value>1</value>
+                    </data>
+                  </data>
+                  <data columnCount="3">
+                    <data>
+                      <language>de_DE</language>
+                      <value>3</value>
+                    </data>
+                  </data>
+                  <data columnCount="4">
+                    <data>
+                      <language>de_DE</language>
+                      <value>percent</value>
+                    </data>
+                  </data>
+                  <data columnCount="5">
+                    <data>
+                      <language>de_DE</language>
+                      <value>30</value>
+                    </data>
+                  </data>
+                  <data columnCount="6">
+                    <data>
+                      <language>de_DE</language>
+                      <value>percent</value>
+                    </data>
+                  </data>
+                </row>
+                <uniqueIds>8ab6b083181d393b01181dbe75b500c5</uniqueIds>
+                <uniqueIds>8ab6b083181d393b01181dbe8c2b00c6</uniqueIds>
+                <uniqueIds>8ab6b083181d393b01181dbe9cd500c7</uniqueIds>
+                <uniqueIds>8ab6b083181d393b01181dbeb82d00c8</uniqueIds>
+                <uniqueIds>8ab6b083181d393b01181dbec8a700c9</uniqueIds>
+                <uniqueIds>8ab6b083181d393b01181dbedeb000ca</uniqueIds>
+              </testdata>
+              <datafile xsi:nil="true"/>
+              <testcaseGuid>8ab6b083181d393b01181dbe268c00c3</testcaseGuid>
+              <projectGuid>8ab6b083150339b501150364afb90435</projectGuid>
+              <hasOwnTestdata>true</hasOwnTestdata>
+              <overriddenNames>
+                <propagated>false</propagated>
+                <originalName>8ab6b08d1a4d08f3011a4d09a4930022</originalName>
+                <newName>ad2622a63567429fb8ba545998e8fe5c</newName>
+              </overriddenNames>
+            </usedTestcase>
+          </teststep>
+          <teststep>
+            <usedTestcase>
+              <name>Store Text in Artikelname</name>
+              <comment xsi:nil="true"/>
+              <GUID>0ffd6a520abd4ed49e1720981cd61370</GUID>
+              <generated>false</generated>
+              <active>true</active>
+              <taskId xsi:nil="true"/>
+              <testdata>
+                <row rowCount="1">
+                  <data columnCount="1">
+                    <data>
+                      <language>de_DE</language>
+                      <value>ARTIKELNAME</value>
+                    </data>
+                  </data>
+                  <data columnCount="2">
+                    <data>
+                      <language>de_DE</language>
+                      <value>1</value>
+                    </data>
+                  </data>
+                  <data columnCount="3">
+                    <data>
+                      <language>de_DE</language>
+                      <value>equals</value>
+                    </data>
+                  </data>
+                  <data columnCount="4">
+                    <data>
+                      <language>de_DE</language>
+                      <value>1</value>
+                    </data>
+                  </data>
+                  <data columnCount="5">
+                    <data>
+                      <language>de_DE</language>
+                      <value>equals</value>
+                    </data>
+                  </data>
+                </row>
+                <uniqueIds>8ab6b08d294519bd012945fb5a4e0ac5</uniqueIds>
+                <uniqueIds>8ab6b08d294519bd012945fb735a0ac6</uniqueIds>
+                <uniqueIds>8ab6b08d294519bd012945fb87640ac7</uniqueIds>
+                <uniqueIds>8ab6b08d294519bd012945fba5940ac8</uniqueIds>
+                <uniqueIds>8ab6b08d294519bd012945fbbca60ac9</uniqueIds>
+              </testdata>
+              <datafile xsi:nil="true"/>
+              <testcaseGuid>8ab6b08d294519bd012945faa09d0a46</testcaseGuid>
+              <projectGuid>8ab6b083150339b501150364afb90435</projectGuid>
+              <hasOwnTestdata>true</hasOwnTestdata>
+              <overriddenNames>
+                <propagated>false</propagated>
+                <originalName>8ab6b08d1a4d08f3011a4d09a4940024</originalName>
+                <newName>ad2622a63567429fb8ba545998e8fe5c</newName>
+              </overriddenNames>
+            </usedTestcase>
+          </teststep>
+          <teststep>
+            <usedTestcase>
+              <name>Logger Artikelstamm</name>
+              <comment xsi:nil="true"/>
+              <GUID>93bd7b47d5fe43a7a37d98c9a7d636ca</GUID>
+              <generated>false</generated>
+              <active>false</active>
+              <taskId xsi:nil="true"/>
+              <testdata>
+                <row rowCount="1">
+                  <data columnCount="1">
+                    <data>
+                      <language>de_DE</language>
+                      <value>logger Found first article $ARTIKELNAME</value>
+                    </data>
+                  </data>
+                  <data columnCount="2">
+                    <data>
+                      <language>de_DE</language>
+                      <value>0</value>
+                    </data>
+                  </data>
+                  <data columnCount="3">
+                    <data>
+                      <language>de_DE</language>
+                      <value>true</value>
+                    </data>
+                  </data>
+                  <data columnCount="4">
+                    <data>
+                      <language>de_DE</language>
+                      <value>1000</value>
+                    </data>
+                  </data>
+                </row>
+                <uniqueIds>8ab6b08316c3bbe20116c3bf02fd000e</uniqueIds>
+                <uniqueIds>8ab6b08316c3bbe20116c3bf1a3e000f</uniqueIds>
+                <uniqueIds>8ab6b083181d393b01181d8bb901005a</uniqueIds>
+                <uniqueIds>8ab6b083181d393b01181d8beaaf005c</uniqueIds>
+              </testdata>
+              <datafile xsi:nil="true"/>
+              <testcaseGuid>8ab6b08316c3bbe20116c3bec817000c</testcaseGuid>
+              <projectGuid>8ab6b083150339b501150364afb90435</projectGuid>
+              <hasOwnTestdata>true</hasOwnTestdata>
             </usedTestcase>
           </teststep>
           <teststep>
@@ -12051,7 +12421,6 @@
             <taskId xsi:nil="true"/>
             <datafile xsi:nil="true"/>
             <testcaseGuid>9230ed2fa60d47b0b54f637da3c72b56</testcaseGuid>
-            <projectGuid>b80640b58118457d83cc1cdfdd69410e</projectGuid>
             <hasOwnTestdata>false</hasOwnTestdata>
             <eventType>TestErrorEvent.Action</eventType>
             <reentryProperty>return</reentryProperty>
@@ -12320,7 +12689,6 @@
             <taskId xsi:nil="true"/>
             <datafile xsi:nil="true"/>
             <testcaseGuid>986ae047b37f4acba827bacb341a178e</testcaseGuid>
-            <projectGuid>b80640b58118457d83cc1cdfdd69410e</projectGuid>
             <hasOwnTestdata>false</hasOwnTestdata>
           </usedTestcase>
         </teststep>
@@ -12348,7 +12716,6 @@
             <testdata/>
             <datafile xsi:nil="true"/>
             <testcaseGuid>97fd294629044f63b3a4deac73cca5e3</testcaseGuid>
-            <projectGuid>b80640b58118457d83cc1cdfdd69410e</projectGuid>
             <hasOwnTestdata>true</hasOwnTestdata>
           </usedTestcase>
         </teststep>
@@ -13279,11 +13646,30 @@
         </teststep>
         <teststep>
           <usedTestcase>
+            <name>Click Okay</name>
+            <comment xsi:nil="true"/>
+            <GUID>e04ac56345024f968b476177fa6331d5</GUID>
+            <generated>false</generated>
+            <active>true</active>
+            <taskId xsi:nil="true"/>
+            <datafile xsi:nil="true"/>
+            <testcaseGuid>f7239477bfd84662ac2fe91e83b03826</testcaseGuid>
+            <projectGuid>b80640b58118457d83cc1cdfdd69410e</projectGuid>
+            <hasOwnTestdata>false</hasOwnTestdata>
+            <overriddenNames>
+              <propagated>false</propagated>
+              <originalName>8ab6b08d1a4d08f3011a4d09a4930022</originalName>
+              <newName>8d605310e1ca415fb5af2b77ebb8d058</newName>
+            </overriddenNames>
+          </usedTestcase>
+        </teststep>
+        <teststep>
+          <usedTestcase>
             <name>Press Tab to go to okay</name>
             <comment xsi:nil="true"/>
             <GUID>47fa8d0ae96943ea80d9a2c2e855b3a3</GUID>
             <generated>false</generated>
-            <active>true</active>
+            <active>false</active>
             <taskId xsi:nil="true"/>
             <datafile xsi:nil="true"/>
             <testcaseGuid>8ab6b083150339b501150364afe807c8</testcaseGuid>
@@ -13297,7 +13683,7 @@
             <comment xsi:nil="true"/>
             <GUID>bf2c6914d831421c95f6449b63a0bb79</GUID>
             <generated>false</generated>
-            <active>true</active>
+            <active>false</active>
             <taskId xsi:nil="true"/>
             <datafile xsi:nil="true"/>
             <testcaseGuid>8ab6b083150339b501150364afe807c9</testcaseGuid>
@@ -14999,7 +15385,6 @@
           </testdata>
           <datafile xsi:nil="true"/>
           <testcaseGuid>7eb5f0389f0344989f68e011800b7a3e</testcaseGuid>
-          <projectGuid>b80640b58118457d83cc1cdfdd69410e</projectGuid>
           <hasOwnTestdata>true</hasOwnTestdata>
         </usedTestcase>
       </teststep>
@@ -15553,7 +15938,7 @@
           <generated>false</generated>
           <active>true</active>
           <taskId xsi:nil="true"/>
-          <selectedAut>ID_A_188456</selectedAut>
+          <selectedAut>ID_A_22689</selectedAut>
           <stepDelay>0</stepDelay>
           <commandLineParameter xsi:nil="true"/>
           <usedTestcase>
@@ -15591,7 +15976,7 @@
           <generated>false</generated>
           <active>true</active>
           <taskId xsi:nil="true"/>
-          <selectedAut>ID_A_188456</selectedAut>
+          <selectedAut>ID_A_22689</selectedAut>
           <stepDelay>0</stepDelay>
           <commandLineParameter xsi:nil="true"/>
           <usedTestcase>
@@ -15740,7 +16125,6 @@
             <taskId xsi:nil="true"/>
             <datafile xsi:nil="true"/>
             <testcaseGuid>21d5642e2f0440e493728c413a3258ec</testcaseGuid>
-            <projectGuid>b80640b58118457d83cc1cdfdd69410e</projectGuid>
             <hasOwnTestdata>false</hasOwnTestdata>
           </usedTestcase>
           <usedTestcase>
@@ -15800,7 +16184,7 @@
           <generated>false</generated>
           <active>true</active>
           <taskId xsi:nil="true"/>
-          <selectedAut>ID_A_188456</selectedAut>
+          <selectedAut>ID_A_22689</selectedAut>
           <stepDelay>0</stepDelay>
           <commandLineParameter xsi:nil="true"/>
           <usedTestcase>
@@ -15838,7 +16222,7 @@
           <generated>false</generated>
           <active>true</active>
           <taskId xsi:nil="true"/>
-          <selectedAut>ID_A_188456</selectedAut>
+          <selectedAut>ID_A_22689</selectedAut>
           <stepDelay>0</stepDelay>
           <commandLineParameter xsi:nil="true"/>
           <usedTestcase>
@@ -15898,7 +16282,7 @@
           <generated>false</generated>
           <active>true</active>
           <taskId xsi:nil="true"/>
-          <selectedAut>ID_A_188456</selectedAut>
+          <selectedAut>ID_A_22689</selectedAut>
           <stepDelay>0</stepDelay>
           <commandLineParameter xsi:nil="true"/>
           <usedTestcase>
@@ -15939,6 +16323,12 @@
     <isReusable>false</isReusable>
     <isProtected>false</isProtected>
     <reusedProjects>
+      <projectName>unbound_modules_concrete</projectName>
+      <projectGUID>8ab6b083150339b501150364afb90435</projectGUID>
+      <majorProjectVersion>8</majorProjectVersion>
+      <minorProjectVersion>0</minorProjectVersion>
+    </reusedProjects>
+    <reusedProjects>
       <projectName>unbound_modules_rcp</projectName>
       <projectGUID>8ab6b0832254bb19012254bb2bfe0001</projectGUID>
       <majorProjectVersion>8</majorProjectVersion>
@@ -15947,12 +16337,6 @@
     <reusedProjects>
       <projectName>unbound_modules_swt</projectName>
       <projectGUID>8a81818316dd751b0116dd75444a0001</projectGUID>
-      <majorProjectVersion>8</majorProjectVersion>
-      <minorProjectVersion>0</minorProjectVersion>
-    </reusedProjects>
-    <reusedProjects>
-      <projectName>unbound_modules_concrete</projectName>
-      <projectGUID>8ab6b083150339b501150364afb90435</projectGUID>
       <majorProjectVersion>8</majorProjectVersion>
       <minorProjectVersion>0</minorProjectVersion>
     </reusedProjects>
@@ -16349,7 +16733,7 @@
       <compName>Elexis300a201405151339_AboutElexisOpenSource_ElexisOpenSourceInstallatio0_TabFolder_1_tpn</compName>
     </componentNames>
     <componentNames>
-      <compType>guidancer.abstract.Widget</compType>
+      <compType>guidancer.concrete.Tree</compType>
       <GUID>42c74cb4e46047d48d1c80dd2811f8f0</GUID>
       <creationContext>OVERRIDDEN_NAME</creationContext>
       <refGuid xsi:nil="true"/>
@@ -16671,7 +17055,7 @@
       <compName>Elexis300qualifier00716_ToolItem_1_tbi</compName>
     </componentNames>
     <componentNames>
-      <compType>guidancer.abstract.Widget</compType>
+      <compType>guidancer.concrete.Button</compType>
       <GUID>8d605310e1ca415fb5af2b77ebb8d058</GUID>
       <creationContext>OVERRIDDEN_NAME</creationContext>
       <refGuid xsi:nil="true"/>
@@ -16769,6 +17153,13 @@
       <compName>SW_Edit_Site_Okay</compName>
     </componentNames>
     <componentNames>
+      <compType>org.eclipse.swt.widgets.ToolItem</compType>
+      <GUID>a153cc93723e4c429a6e446e2fd2d7a6</GUID>
+      <creationContext>STEP</creationContext>
+      <refGuid xsi:nil="true"/>
+      <compName>Elexis300a201408201543_Artikelstamm_ToolItem_2_tbi</compName>
+    </componentNames>
+    <componentNames>
       <compType>guidancer.concrete.TextComponent</compType>
       <GUID>a43dd75cbfc64f50988d8a8f890e7343</GUID>
       <creationContext>OVERRIDDEN_NAME</creationContext>
@@ -16815,7 +17206,7 @@
       <GUID>ad2622a63567429fb8ba545998e8fe5c</GUID>
       <creationContext>STEP</creationContext>
       <refGuid xsi:nil="true"/>
-      <compName>Elexis300qualifier0071_Artikelstamm_Table_1_tbl</compName>
+      <compName>Artikelstamm_Table_1_tbl</compName>
     </componentNames>
     <componentNames>
       <compType>guidancer.concrete.Button</compType>
@@ -17223,7 +17614,221 @@
       <refGuid xsi:nil="true"/>
       <compName>Esr_Datum_grc</compName>
     </componentNames>
+    <componentNames>
+      <compType>guidancer.concrete.Button</compType>
+      <GUID>ffe2184701a047a1bce06878d15a3505</GUID>
+      <creationContext>STEP</creationContext>
+      <refGuid xsi:nil="true"/>
+      <compName>Elexis300a201408201543_Datenimport_Suchen_btn</compName>
+    </componentNames>
     <testresultSummaries>
+      <testresultSummary>
+        <attribute>
+          <key>almReportStatus</key>
+          <value>NOT_CONFIGURED</value>
+          <type>org.eclipse.jubula.client.core.model.ITestResultSummaryPO$AlmReportStatus</type>
+        </attribute>
+        <attribute>
+          <key>autAgentName</key>
+          <value>localhost</value>
+          <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+          <key>autCmdParameter</key>
+          <value>-clean -console -consoleLog -debug -vmargs -Dch.elexis.username=007 -Dch.elexis.password=topsecret -Delexis-run-mode=RunFromScratch</value>
+          <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+          <key>autConfigName</key>
+          <value>elexis-linux@localhost</value>
+          <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+          <key>autHostname</key>
+          <value>localhost</value>
+          <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+          <key>autId</key>
+          <value>elexis</value>
+          <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+          <key>autName</key>
+          <value>elexis</value>
+          <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+          <key>autOS</key>
+          <value>Linux</value>
+          <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+          <key>autToolkit</key>
+          <value>com.bredexsw.guidancer.RcpToolkitPlugin</value>
+          <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+          <key>commentDetail</key>
+          <value xsi:nil="true"/>
+          <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+          <key>commentTitle</key>
+          <value xsi:nil="true"/>
+          <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+          <key>internalAutConfigGuid</key>
+          <value>c8239b8fae7c46b49f62e0d4c899b816</value>
+          <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+          <key>internalAutGuid</key>
+          <value>1670788c1c9a426898a79c66f9d6393b</value>
+          <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+          <key>internalGuid</key>
+          <value>4b5b4fca5c2145e392058d3aea283b00</value>
+          <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+          <key>internalMonitoringId</key>
+          <value>none selected</value>
+          <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+          <key>internalProjectGuid</key>
+          <value>b80640b58118457d83cc1cdfdd69410e</value>
+          <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+          <key>internalProjectID</key>
+          <value>4927</value>
+          <type>java.lang.Long</type>
+        </attribute>
+        <attribute>
+          <key>internalTestJobGuid</key>
+          <value xsi:nil="true"/>
+          <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+          <key>internalTestsuiteGuid</key>
+          <value>aef684f301174fb28caf0731a74af9fe</value>
+          <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+          <key>monitoringValue</key>
+          <value xsi:nil="true"/>
+          <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+          <key>monitoringValueType</key>
+          <value>none</value>
+          <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+          <key>projectMajorVersion</key>
+          <value>1</value>
+          <type>int</type>
+        </attribute>
+        <attribute>
+          <key>projectMinorVersion</key>
+          <value>0</value>
+          <type>int</type>
+        </attribute>
+        <attribute>
+          <key>projectName</key>
+          <value>ElexisCore 1.0</value>
+          <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+          <key>reportWritten</key>
+          <value>false</value>
+          <type>boolean</type>
+        </attribute>
+        <attribute>
+          <key>statusString</key>
+          <value>Error in Children</value>
+          <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+          <key>testJobName</key>
+          <value xsi:nil="true"/>
+          <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+          <key>testJobStartTime</key>
+          <value xsi:nil="true"/>
+          <type>java.util.Date</type>
+        </attribute>
+        <attribute>
+          <key>testRunState</key>
+          <value>FAILED</value>
+          <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+          <key>testsuiteDate</key>
+          <value>2014-03-14 08:49:55.0</value>
+          <type>java.util.Date</type>
+        </attribute>
+        <attribute>
+          <key>testsuiteDuration</key>
+          <value>00:00:41</value>
+          <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+          <key>testsuiteEndTime</key>
+          <value>2014-03-14 08:49:55.0</value>
+          <type>java.util.Date</type>
+        </attribute>
+        <attribute>
+          <key>testsuiteEventHandlerTeststeps</key>
+          <value>0</value>
+          <type>int</type>
+        </attribute>
+        <attribute>
+          <key>testsuiteExecutedTeststeps</key>
+          <value>44</value>
+          <type>int</type>
+        </attribute>
+        <attribute>
+          <key>testsuiteExpectedTeststeps</key>
+          <value>1232</value>
+          <type>int</type>
+        </attribute>
+        <attribute>
+          <key>testsuiteFailedTeststeps</key>
+          <value>1</value>
+          <type>int</type>
+        </attribute>
+        <attribute>
+          <key>testsuiteLanguage</key>
+          <value>German (Germany)</value>
+          <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+          <key>testsuiteName</key>
+          <value>FULLTEST</value>
+          <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+          <key>testsuiteRelevant</key>
+          <value>true</value>
+          <type>boolean</type>
+        </attribute>
+        <attribute>
+          <key>testsuiteStartTime</key>
+          <value>2014-03-14 08:49:14.0</value>
+          <type>java.util.Date</type>
+        </attribute>
+        <attribute>
+          <key>testsuiteStatus</key>
+          <value>5</value>
+          <type>int</type>
+        </attribute>
+      </testresultSummary>
     </testresultSummaries>
     <checkConfiguration>
       <checkId>com.bredexsw.guidancer.client.teststyle.bredexstyle.nospaces</checkId>
@@ -17400,6 +18005,19 @@
       </activeContext>
     </checkConfiguration>
     <checkConfiguration>
+      <checkId>com.bredexsw.guidancer.client.teststyle.bredexstyle.fulltest</checkId>
+      <activated>true</activated>
+      <severity>INFO</severity>
+      <checkAttribute>
+        <name>name contains</name>
+        <value>FULLTEST</value>
+      </checkAttribute>
+      <activeContext>
+        <class>ProjectContext</class>
+        <active>true</active>
+      </activeContext>
+    </checkConfiguration>
+    <checkConfiguration>
       <checkId>com.bredexsw.guidancer.client.teststyle.bredexstyle.spaces</checkId>
       <activated>true</activated>
       <severity>WARNING</severity>
@@ -17437,19 +18055,6 @@
       </activeContext>
       <activeContext>
         <class>TestSuiteContext</class>
-        <active>true</active>
-      </activeContext>
-    </checkConfiguration>
-    <checkConfiguration>
-      <checkId>com.bredexsw.guidancer.client.teststyle.bredexstyle.fulltest</checkId>
-      <activated>true</activated>
-      <severity>INFO</severity>
-      <checkAttribute>
-        <name>name contains</name>
-        <value>FULLTEST</value>
-      </checkAttribute>
-      <activeContext>
-        <class>ProjectContext</class>
         <active>true</active>
       </activeContext>
     </checkConfiguration>
