@@ -7,7 +7,7 @@
  *
  * Contributors:
  *    G. Weirich - initial implementation
- * 
+ *
  *******************************************************************************/
 package ch.elexis.core.ui.medication.views;
 
@@ -58,9 +58,9 @@ import ch.rgw.tools.TimeTool;
  * Display and let the user modify the medication of the currently selected patient This is a
  * pop-in-Replacement for DauerMediDisplay. To calculate the daily cost wie accept the forms 1-1-1-1
  * and 1x1, 2x3 and so on
- * 
+ *
  * @author gerry
- * 
+ *
  */
 public class FixMediDisplay extends ListDisplay<Prescription> {
 	public static final String ID = "ch.elexis.FixMediDisplay";
@@ -75,7 +75,7 @@ public class FixMediDisplay extends ListDisplay<Prescription> {
 	static final String LISTE = Messages.FixMediDisplay_UsageList; //$NON-NLS-1$
 	static final String HINZU = Messages.FixMediDisplay_AddItem; //$NON-NLS-1$
 	static final String KOPIEREN = Messages.FixMediDisplay_Copy; //$NON-NLS-1$
-	
+
 	public FixMediDisplay(Composite parent, IViewSite s){
 		super(parent, SWT.NONE, null);
 		lCost = new Label(this, SWT.NONE);
@@ -92,7 +92,7 @@ public class FixMediDisplay extends ListDisplay<Prescription> {
 		setDLDListener(dlisten);
 		target = new PersistentObjectDropTarget(Messages.FixMediDisplay_FixMedikation, this, //$NON-NLS-1$
 			new PersistentObjectDropTarget.IReceiver() {
-				
+
 				public boolean accept(PersistentObject o){
 					if (o instanceof Prescription) {
 						return true;
@@ -102,9 +102,9 @@ public class FixMediDisplay extends ListDisplay<Prescription> {
 					}
 					return false;
 				}
-				
+
 				public void dropped(PersistentObject o, DropTargetEvent e){
-					
+
 					if (o instanceof Artikel) {
 						Prescription pre =
 							new Prescription((Artikel) o, (Patient) ElexisEventDispatcher
@@ -115,7 +115,7 @@ public class FixMediDisplay extends ListDisplay<Prescription> {
 							// self.add(pre);
 							reload();
 						}
-						
+
 					} else if (o instanceof Prescription) {
 						Prescription[] existing =
 							((Patient) ElexisEventDispatcher.getSelected(Patient.class))
@@ -136,7 +136,7 @@ public class FixMediDisplay extends ListDisplay<Prescription> {
 				}
 			});
 		new PersistentObjectDragSource(list, new PersistentObjectDragSource.ISelectionRenderer() {
-			
+
 			public List<PersistentObject> getSelection(){
 				Prescription pr = FixMediDisplay.this.getSelection();
 				ArrayList<PersistentObject> ret = new ArrayList<PersistentObject>(1);
@@ -146,7 +146,7 @@ public class FixMediDisplay extends ListDisplay<Prescription> {
 				return ret;
 			}
 		});
-		
+
 		list.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e){
@@ -154,11 +154,10 @@ public class FixMediDisplay extends ListDisplay<Prescription> {
 			}
 		});
 	}
-	
+
 	public MenuManager getMenuManager(){
 		return menuManager;
 	}
-	
 	public void reload(){
 		clear();
 		Patient act = ElexisEventDispatcher.getSelectedPatient();
@@ -167,29 +166,8 @@ public class FixMediDisplay extends ListDisplay<Prescription> {
 		if (act != null) {
 			Prescription[] pre = act.getFixmedikation();
 			for (Prescription pr : pre) {
-				float num = 0;
+				float num = pr.calculateTagesDosis(pr.getDosis());
 				try {
-					String dosis = pr.getDosis();
-					if (dosis != null) {
-						if (dosis.matches("[0-9]+[xX][0-9]+(/[0-9]+)?")) { //$NON-NLS-1$
-							String[] dose = dosis.split("[xX]"); //$NON-NLS-1$
-							int count = Integer.parseInt(dose[0]);
-							num = getNum(dose[1]) * count;
-						} else if (dosis.indexOf('-') != -1) {
-							String[] dos = dosis.split("-"); //$NON-NLS-1$
-							if (dos.length > 2) {
-								for (String d : dos) {
-									num += getNum(d);
-								}
-							} else {
-								num = getNum(dos[1]);
-							}
-						} else {
-							canCalculate = false;
-						}
-					} else {
-						canCalculate = false;
-					}
 					Artikel art = pr.getArtikel();
 					if (art != null) {
 						int ve = art.guessVE();
@@ -220,49 +198,21 @@ public class FixMediDisplay extends ListDisplay<Prescription> {
 			}
 		}
 	}
-	
-	static float getNum(String num){
-		try {
-			String n = num.trim();
-			if (n.equalsIgnoreCase("½"))
-				return 0.5F;
-			if (n.equalsIgnoreCase("¼"))
-				return 0.25F;
-			if (n.equalsIgnoreCase("1½"))
-				return 1.5F;
-			if (n.equalsIgnoreCase("⅓"))
-				return 0.33F;
-			
-			if (n.indexOf('/') != -1) {
-				String[] bruch = n.split(StringConstants.SLASH);
-				float zaehler = Float.parseFloat(bruch[0]);
-				float nenner = Float.parseFloat(bruch[1]);
-				return zaehler / nenner;
-			} else {
-				return Float.parseFloat(n);
-			}
-		} catch (NumberFormatException e) {
-			Status status = new Status(IStatus.INFO, Hub.PLUGIN_ID, e.getLocalizedMessage(), e);
-			StatusManager.getManager().handle(status, StatusManager.LOG);
-			return 0.0F;
-		}
-		
-	}
-	
+
 	class DauerMediListener implements LDListener {
 		IViewSite site;
-		
+
 		DauerMediListener(IViewSite s){
 			site = s;
 		}
-		
+
 		public void hyperlinkActivated(String l){
 			try {
 				if (l.equals(HINZU)) {
 					site.getPage().showView(LeistungenView.ID);
 					CodeSelectorHandler.getInstance().setCodeSelectorTarget(target);
 				} else if (l.equals(LISTE)) {
-					
+
 					RezeptBlatt rpb = (RezeptBlatt) site.getPage().showView(RezeptBlatt.ID);
 					rpb.createEinnahmeliste(ElexisEventDispatcher.getSelectedPatient(), getAll()
 						.toArray(new Prescription[0]));
@@ -275,7 +225,7 @@ public class FixMediDisplay extends ListDisplay<Prescription> {
 						 */
 						rp.addPrescription(new Prescription(p));
 					}
-					
+
 					// PMDI - Dependency Injection through ElexisConfigurationConstants
 					RezeptBlatt rpb =
 						(RezeptBlatt) site.getPage().showView(
@@ -288,9 +238,9 @@ public class FixMediDisplay extends ListDisplay<Prescription> {
 			} catch (Exception ex) {
 				ExHandler.handle(ex);
 			}
-			
+
 		}
-		
+
 		public String getLabel(Object o){
 			if (o instanceof Prescription) {
 				return ((Prescription) o).getLabel();
@@ -298,9 +248,9 @@ public class FixMediDisplay extends ListDisplay<Prescription> {
 			return o.toString();
 		}
 	}
-	
+
 	private void makeActions(){
-		
+
 		changeMedicationAction =
 			new RestrictedAction(AccessControlDefaults.MEDICATION_MODIFY,
 				Messages.FixMediDisplay_Change) { //$NON-NLS-1$
@@ -308,7 +258,7 @@ public class FixMediDisplay extends ListDisplay<Prescription> {
 					setImageDescriptor(Images.IMG_EDIT.getImageDescriptor());
 					setToolTipText(Messages.FixMediDisplay_Modify); //$NON-NLS-1$
 				}
-				
+
 				public void doRun(){
 					Prescription pr = getSelection();
 					if (pr != null) {
@@ -318,7 +268,7 @@ public class FixMediDisplay extends ListDisplay<Prescription> {
 					}
 				}
 			};
-		
+
 		stopMedicationAction =
 			new RestrictedAction(AccessControlDefaults.MEDICATION_MODIFY,
 				Messages.FixMediDisplay_Stop) { //$NON-NLS-1$
@@ -326,7 +276,7 @@ public class FixMediDisplay extends ListDisplay<Prescription> {
 					setImageDescriptor(Images.IMG_REMOVEITEM.getImageDescriptor());
 					setToolTipText(Messages.FixMediDisplay_StopThisMedicament); //$NON-NLS-1$
 				}
-				
+
 				public void doRun(){
 					Prescription pr = getSelection();
 					if (pr != null) {
@@ -337,7 +287,7 @@ public class FixMediDisplay extends ListDisplay<Prescription> {
 					}
 				}
 			};
-		
+
 		removeMedicationAction =
 			new RestrictedAction(AccessControlDefaults.DELETE_MEDICATION,
 				Messages.FixMediDisplay_Delete) { //$NON-NLS-1$
@@ -345,7 +295,7 @@ public class FixMediDisplay extends ListDisplay<Prescription> {
 					setImageDescriptor(Images.IMG_DELETE.getImageDescriptor());
 					setToolTipText(Messages.FixMediDisplay_DeleteUnrecoverable); //$NON-NLS-1$
 				}
-				
+
 				public void doRun(){
 					Prescription pr = getSelection();
 					if (pr != null) {
@@ -356,7 +306,7 @@ public class FixMediDisplay extends ListDisplay<Prescription> {
 					}
 				}
 			};
-		
+
 	}
-	
+
 }
