@@ -18,7 +18,6 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
-import org.eclipse.core.commands.Command;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
@@ -49,16 +48,11 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.TreeItem;
-import org.eclipse.ui.IPartListener;
 import org.eclipse.ui.ISaveablePart2;
-import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.commands.ICommandService;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
-import org.eclipse.ui.handlers.IHandlerService;
-import org.eclipse.ui.handlers.RegistryToggleState;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.ui.progress.IProgressService;
 
@@ -71,7 +65,6 @@ import ch.elexis.core.ui.actions.GlobalActions;
 import ch.elexis.core.ui.actions.GlobalEventDispatcher;
 import ch.elexis.core.ui.actions.RestrictedAction;
 import ch.elexis.core.ui.commands.ErstelleRnnCommand;
-import ch.elexis.core.ui.commands.KonsZumVerrechnenLinkCommand;
 import ch.elexis.core.ui.constants.UiResourceConstants;
 import ch.elexis.core.ui.dialogs.KonsZumVerrechnenWizardDialog;
 import ch.elexis.core.ui.icons.Images;
@@ -311,11 +304,13 @@ public class KonsZumVerrechnenView extends ViewPart implements ISaveablePart2 {
 		menu.createToolbar(refreshAction, wizardAction, printAction, clearAction, null, billAction);
 		menu.createMenu(wizardAction, selectByDateAction);
 		menu.createViewerContextMenu(cv.getViewerWidget(), detailAction);
-		addPartActivationListener();
 	}
 	
 	@Override
-	public void setFocus(){}
+	public void setFocus(){
+		// TODO Auto-generated method stub
+		
+	}
 	
 	class RLazyTreeListener implements LazyTreeListener {
 		final LazyTreeListener self = this;
@@ -923,54 +918,5 @@ public class KonsZumVerrechnenView extends ViewPart implements ISaveablePart2 {
 			// TODO Auto-generated method stub
 			return false;
 		}
-		
-	}
-	
-	public CommonViewer getLeftSide(){
-		return cv;
-	}
-	
-	public TreeViewer getRightSide(){
-		return tvSel;
-	}
-	
-	private void addPartActivationListener(){
-		getViewSite().getPage().addPartListener(new IPartListener() {
-			@Override
-			public void partActivated(IWorkbenchPart part){
-				ICommandService commandService =
-					(ICommandService) PlatformUI.getWorkbench().getService(ICommandService.class);
-				Command command = commandService.getCommand("ch.elexis.core.command.linkViews");
-				boolean state = (boolean) command.getState(RegistryToggleState.STATE_ID).getValue();
-				
-				if (state == true) {
-					try {
-						command.getState(RegistryToggleState.STATE_ID).setValue(Boolean.FALSE);
-						// execute the command
-						IHandlerService handlerService =
-							(IHandlerService) PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-								.getService(IHandlerService.class);
-						
-						handlerService.executeCommand(KonsZumVerrechnenLinkCommand.CMD_ID, null);
-					} catch (Exception ex) {
-						ex.printStackTrace();
-					}
-				}
-				
-				getViewSite().getPage().removePartListener(this);
-			}
-			
-			@Override
-			public void partBroughtToTop(IWorkbenchPart part){}
-			
-			@Override
-			public void partClosed(IWorkbenchPart part){}
-			
-			@Override
-			public void partDeactivated(IWorkbenchPart part){}
-			
-			@Override
-			public void partOpened(IWorkbenchPart part){}
-		});
 	}
 }
