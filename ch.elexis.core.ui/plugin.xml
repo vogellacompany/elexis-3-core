@@ -220,6 +220,15 @@
             id="ch.elexis.eigenleistung.create"
             name="Eigenleistung Anlegen">
       </command>
+      <command
+            defaultHandler="ch.elexis.core.ui.commands.KonsZumVerrechnenLinkCommand"
+            id="ch.elexis.core.command.linkViews"
+            name="Patientenauswahl verlinken">
+         <state
+               class="org.eclipse.ui.handlers.RegistryToggleState:true"
+               id="org.eclipse.ui.commands.toggleState">
+         </state>
+      </command>
    </extension>
    <extension
          point="ch.elexis.core.data.coreOperation">
@@ -321,6 +330,16 @@
                icon="platform:/plugin/ch.elexis.core.ui.icons/icons/16x16/system-search-3.png"
                label="%properties"
                style="push">
+         </command>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="toolbar:ch.elexis.BehandlungenVerrechnenView">
+         <command
+               commandId="ch.elexis.core.command.linkViews"
+               icon="platform:/plugin/ch.elexis.core.ui.icons/icons/16x16/synced.gif"
+               label="Patientenauswahl verlinken"
+               style="toggle">
          </command>
       </menuContribution>
    </extension>
