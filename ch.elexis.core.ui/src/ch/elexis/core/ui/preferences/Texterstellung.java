@@ -16,7 +16,6 @@ import java.util.List;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.jface.preference.RadioGroupFieldEditor;
-import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 
@@ -43,8 +42,6 @@ public class Texterstellung extends FieldEditorPreferencePage implements IWorkbe
 		
 		List<IConfigurationElement> list =
 			Extensions.getExtensions(ExtensionPointConstantsUi.TEXTPROCESSINGPLUGIN);
-		addField(new BooleanFieldEditor(Preferences.P_TEXT_MULTIPLE,
-			Messages.Texterstellung_Allow_Multiple, getFieldEditorParent()));
 		String[][] rows = new String[list.size()][];
 		int i = 0;
 		for (IConfigurationElement ice : list) {
