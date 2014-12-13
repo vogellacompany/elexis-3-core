@@ -277,6 +277,8 @@ public class Messages extends NLS {
 	public static String TextTemplatePreferences_suffixForStation;
 	public static String Texterstellung_ExternalProgram;
 	public static String Texterstellung_TextProcessor;
+	public static String Texterstellung_Support_Legacy;
+	public static String Texterstellung_Rename_with_F2;
 	public static String UserCasePreferences_Cases;
 	public static String UserCasePreferences_DefaultBillingSystem;
 	public static String UserCasePreferences_DefaultDiagnose;
