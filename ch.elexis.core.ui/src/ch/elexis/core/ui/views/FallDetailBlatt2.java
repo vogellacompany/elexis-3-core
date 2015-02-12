@@ -859,7 +859,7 @@ public class FallDetailBlatt2 extends Composite {
 	 *            </ul>
 	 */
 	private void setExtendedFields(final Fall f, final String fieldList, String TitleBarText,
-		boolean deletable, boolean dangerous, boolean optional){
+		boolean deletable, boolean dangerous, final boolean optional){
 		// *** kind "numeric" or "string" is saved in the dataField of the
 		// control
 		
@@ -973,6 +973,9 @@ public class FallDetailBlatt2 extends Composite {
 								MessageFormat.format(SELECT_CONTACT_BODY, new Object[] {
 									r[0]
 								}), true, Kontakt.DEFAULT_SORT);
+						if (optional) {
+							ksl.enableEmptyFieldButton();
+						}
 						// "Bitte wählen Sie den Kontakt für " + r[0] +
 						// " aus", true);
 						if (ksl.open() == Dialog.OK) {
