@@ -345,8 +345,6 @@ public class FallDetailBlatt2 extends Composite {
 		lbReq.setLayoutData(SWTHelper.getFillGridData(2, true, 1, false));
 		lbReq.setText(Messages.Leistungscodes_necessaryData);
 		
-		new Label(top, SWT.NONE);
-		
 		hlGarant = tk.createHyperlink(top, RECHNUNGSEMPFAENGER, SWT.NONE);
 		hlGarant.addHyperlinkListener(new HyperlinkAdapter() {
 			@Override
