@@ -345,14 +345,6 @@ public class FallDetailBlatt2 extends Composite {
 		lbReq.setLayoutData(SWTHelper.getFillGridData(2, true, 1, false));
 		lbReq.setText(Messages.Leistungscodes_necessaryData);
 		
-		btnCopyForPatient = new Button(top, SWT.CHECK);
-		btnCopyForPatient.setText(Messages.FallDetailBlatt2_CopyToPatient);
-		btnCopyForPatient.addSelectionListener(new SelectionAdapter() {
-			public void widgetSelected(SelectionEvent e){
-				boolean b = btnCopyForPatient.getSelection();
-				getFall().setCopyForPatient(b);
-			};
-		});
 		new Label(top, SWT.NONE);
 		
 		hlGarant = tk.createHyperlink(top, RECHNUNGSEMPFAENGER, SWT.NONE);
