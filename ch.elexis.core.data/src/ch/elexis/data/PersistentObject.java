@@ -405,7 +405,9 @@ public abstract class PersistentObject implements IPersistentObject {
 					return false;
 				}
 			} catch (Exception ex) {
-				msg = "Exception connecting to test database:" + dbSpec + " using " + dbFlavor;
+				msg =
+					"Exception connecting to test database:" + dbSpec + " using " + dbFlavor + ": "
+						+ ex.getMessage();
 				log.error(msg);
 				System.out.println(msg);
 				if (exitOnFail)
@@ -451,7 +453,8 @@ public abstract class PersistentObject implements IPersistentObject {
 					CoreHub.pin.initializeGlobalPreferences();
 					if (runningFromScratch) {
 						Mandant m = new Mandant("007", "topsecret");
-						String clientEmail = System.getProperty(ElexisSystemPropertyConstants.CLIENT_EMAIL);
+						String clientEmail =
+							System.getProperty(ElexisSystemPropertyConstants.CLIENT_EMAIL);
 						if (clientEmail == null)
 							clientEmail = "james@bond.invalid";
 						m.set(new String[] {
@@ -1939,13 +1942,33 @@ public abstract class PersistentObject implements IPersistentObject {
 	}
 	
 	/**
-	 * Mehrere Felder auf einmal auslesen
+	 * @param checkNulls
+	 *            wether the returned values should be <code>null</code> safe, that is no
+	 *            <code>null</code> values, but only ""
+	 * @param fields
+	 * @return array containing the required fields in order
+	 * @since 3.1
+	 */
+	public String[] get(boolean checkNulls, String... fields){
+		String[] ret = new String[fields.length];
+		get(fields, ret);
+		if (checkNulls) {
+			for (int i = 0; i < ret.length; i++) {
+				ret[i] = checkNull(ret[i]);
+			}
+		}
+		
+		return ret;
+	}
+	
+	/**
+	 * Read multiple fields, as defined in fields into the values array
 	 * 
 	 * @param fields
-	 *            die Felder
+	 *            the field to read
 	 * @param values
-	 *            String Array für die gelesenen Werte
-	 * @return true ok, values wurden gesetzt
+	 *            the storage array for the fields
+	 * @return true if values were set, else <code>false</code> and exception is created
 	 */
 	public boolean get(final String[] fields, final String[] values){
 		if ((fields == null) || (values == null) || (fields.length != values.length)) {
