@@ -187,29 +187,25 @@ public enum Images {
 	/** remove document */
 	IMG_DOCUMENT_REMOVE, IMG_MENUBAR, IMG_TOOLBAR,
 	/** a bill */
-	IMG_BILL, 
-	IMG_VIEW_WORK_INCAPABLE, 
-	IMG_VIEW_CONSULTATION_DETAIL, 
-	IMG_VIEW_LABORATORY,
-	IMG_VIEW_PATIENT_DETAIL, 
-	IMG_VIEW_RECIPES, 
-	IMG_DATABASE, 
-	IMG_CONFLICT,
-	IMG_QUESTION_MARK,
-	IMG_FLAG_AT,
-	IMG_FLAG_DE,
-	IMG_FLAG_CH,
-	IMG_FLAG_FR,
-	IMG_FLAG_IT,
-	IMG_FLAG_FL,
-	/** a generic group icon */
-	IMG_CATEGORY_GROUP,
-	/** a syringe, nozzle, injection icon */
-	IMG_SYRINGE,
-	/** small blocks */
-	IMG_BLOCKS_SMALL, 
-	/** sync icon **/
-	IMG_SYNC;
+	IMG_BILL, IMG_VIEW_WORK_INCAPABLE, IMG_VIEW_CONSULTATION_DETAIL, IMG_VIEW_LABORATORY,
+		IMG_VIEW_PATIENT_DETAIL, IMG_VIEW_RECIPES, IMG_DATABASE, IMG_CONFLICT, IMG_QUESTION_MARK,
+		IMG_FLAG_AT, IMG_FLAG_DE, IMG_FLAG_CH, IMG_FLAG_FR, IMG_FLAG_IT, IMG_FLAG_FL,
+		/** a generic group icon */
+		IMG_CATEGORY_GROUP,
+		/** a syringe, nozzle, injection icon */
+		IMG_SYRINGE,
+		/** small blocks */
+		IMG_BLOCKS_SMALL,
+		/** sync icon **/
+		IMG_SYNC,
+		/** a star icon **/
+		IMG_STAR,
+		/** a non-filed star icon **/
+		IMG_STAR_EMPTY,
+		/** stop icon **/
+		IMG_STOP,
+		/** covercard png **/
+		IMG_COVERCARD;
 	
 	private Images(){}
 	
