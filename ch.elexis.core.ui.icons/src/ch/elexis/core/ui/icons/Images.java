@@ -263,16 +263,16 @@ public enum Images {
 	}
 	
 	/**
-	 * Returns an image. Clients do not need to dispose the image, it will be disposed
-	 * automatically.
+	 * Returns an image. Clients do not need to dispose the image, it will be
+	 * disposed automatically.
 	 * 
 	 * @return an {@link Image}
 	 */
-	public Image getImage(ImageSize is){
-		Image image = JFaceResources.getImageRegistry().get(this.name());
+	public Image getImage(ImageSize is) {
+		Image image = JFaceResources.getImageRegistry().get(this.name() + is.name);
 		if (image == null) {
 			addIconImageDescriptor(this.name(), is);
-			image = JFaceResources.getImageRegistry().get(this.name());
+			image = JFaceResources.getImageRegistry().get(this.name() + is.name);
 		}
 		return image;
 	}
