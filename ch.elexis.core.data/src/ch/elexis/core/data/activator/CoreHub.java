@@ -348,6 +348,8 @@ public class CoreHub implements BundleActivator {
 	}
 	
 	public static void setMandant(Mandant newMandant){
+		if (newMandant != null)
+			System.out.println("setMandant.getMandantLabel: " + newMandant.getMandantLabel());
 		if (actMandant != null && mandantCfg != null) {
 			mandantCfg.flush();
 		}
@@ -355,6 +357,10 @@ public class CoreHub implements BundleActivator {
 			mandantCfg = userCfg;
 		} else {
 			mandantCfg = getUserSetting(newMandant);
+			if (mandantCfg == null) {
+				log.error("Mandant " + newMandant.getMandantLabel() + " has no UserSetting. Should have IS_USER (istAnwender) flag in contact details" ); //$NON-NLS-1$
+				mandantCfg = userCfg;
+			}
 		}
 		
 		actMandant = newMandant;
