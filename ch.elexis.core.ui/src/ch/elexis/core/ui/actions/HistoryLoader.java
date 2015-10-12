@@ -73,14 +73,7 @@ public class HistoryLoader extends BackgroundJob {
 				return Status.OK_STATUS;
 			}
 			
-			List<Konsultation> konsList = new ArrayList<Konsultation>(lKons);
-			HashSet<Konsultation> hsKons = new HashSet<Konsultation>();
-			hsKons.addAll(konsList);
-			konsList.clear();
-			konsList.addAll(hsKons);
-			
-			//sort konsList by date
-			Collections.sort(konsList, new Comparator<Konsultation>() {
+			Collections.sort(lKons, new Comparator<Konsultation>() {
 				TimeTool t1 = new TimeTool();
 				TimeTool t2 = new TimeTool();
 				
@@ -99,6 +92,7 @@ public class HistoryLoader extends BackgroundJob {
 					return 0;
 				}
 			});
+			List<Konsultation> konsList = new ArrayList<Konsultation>(lKons);
 			monitor.worked(50);
 			Iterator<Konsultation> it = konsList.iterator();
 			sb.append("<form>"); //$NON-NLS-1$
