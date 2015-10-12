@@ -72,7 +72,15 @@ public class HistoryLoader extends BackgroundJob {
 			if (lKons.isEmpty()) {
 				return Status.OK_STATUS;
 			}
-			Collections.sort(lKons, new Comparator<Konsultation>() {
+			
+			List<Konsultation> konsList = new ArrayList<Konsultation>(lKons);
+			HashSet<Konsultation> hsKons = new HashSet<Konsultation>();
+			hsKons.addAll(konsList);
+			konsList.clear();
+			konsList.addAll(hsKons);
+			
+			//sort konsList by date
+			Collections.sort(konsList, new Comparator<Konsultation>() {
 				TimeTool t1 = new TimeTool();
 				TimeTool t2 = new TimeTool();
 				
@@ -92,7 +100,7 @@ public class HistoryLoader extends BackgroundJob {
 				}
 			});
 			monitor.worked(50);
-			Iterator<Konsultation> it = lKons.iterator();
+			Iterator<Konsultation> it = konsList.iterator();
 			sb.append("<form>"); //$NON-NLS-1$
 			globalFilter = ObjectFilterRegistry.getInstance().getFilterFor(Konsultation.class);
 			while (!monitor.isCanceled()) {
