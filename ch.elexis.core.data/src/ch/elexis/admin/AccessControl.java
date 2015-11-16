@@ -210,6 +210,20 @@ public class AccessControl {
 	}
 	
 	/**
+	 * @param anw the {@link Anwender}
+	 * @return whether the current {@link Anwender} is part of the admin group
+	 * @since 3.0.23
+	 * @see 3851
+	 */
+	public boolean userIsMemberOfAdminGroup(Anwender anw) {
+		List<String> list = usergroups.get(anw.getId() + "#groups#");
+		for (String entry : list) {
+			if(ADMIN_GROUP.equals(entry)) return true;
+		}
+		return false;
+	}
+	
+	/**
 	 * Zugriffsrecht(e) erteilen
 	 * 
 	 * @param user
