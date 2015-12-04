@@ -7,7 +7,7 @@
   </parent>
   <groupId> ch.elexis </groupId>
   <artifactId> ch.elexis.core.data </artifactId>
-  <version>3.0.23-SNAPSHOT</version>
+  <version>3.0.24-SNAPSHOT</version>
   <packaging> eclipse-plugin </packaging>
   <build>
     <plugins>
