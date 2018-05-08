@@ -40,6 +40,8 @@ public class Messages {
 	public static String ImporterPage_source = ch.elexis.core.l10n.Messages.ImporterPage_source;
 	public static String ImporterPage_unknownType = ch.elexis.core.l10n.Messages.ImporterPage_unknownType;
 	public static String KGDrucker_couldntShow = ch.elexis.core.l10n.Messages.KGDrucker_couldntShow;
+	public static String KontakteView_SalutationM = ch.elexis.core.l10n.Messages.KontakteView_SalutationM;
+	public static String KontakteView_SalutationF = ch.elexis.core.l10n.Messages.KontakteView_SalutationF;
 	public static String KGDrucker_couldntprint = ch.elexis.core.l10n.Messages.KGDrucker_couldntprint;
 	public static String KGDrucker_emr = ch.elexis.core.l10n.Messages.KGDrucker_emr;
 	public static String KGDrucker_errorPrinting = ch.elexis.core.l10n.Messages.KGDrucker_errorPrinting;
