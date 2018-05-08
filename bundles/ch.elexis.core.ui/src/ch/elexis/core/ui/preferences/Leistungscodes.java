@@ -81,18 +81,21 @@ public class Leistungscodes extends PreferencePage implements IWorkbenchPreferen
 	private static final String ARGUMENTSSDELIMITER = ":"; //$NON-NLS-1$
 	private static final String ITEMDELIMITER = "\t"; //$NON-NLS-1$
 	private static final String FOURLINESPLACEHOLDER = "\n\n\n\nd"; //$NON-NLS-1$
+	private static final int RESULT_SIZE = 8;
 	List<IConfigurationElement> lo = Extensions
 		.getExtensions(ExtensionPointConstantsData.RECHNUNGS_MANAGER); //$NON-NLS-1$
 	List<IConfigurationElement> ll = Extensions
 		.getExtensions(ExtensionPointConstantsUi.VERRECHNUNGSCODE); //$NON-NLS-1$
 	String[] systeme = CoreHub.globalCfg.nodes(Preferences.LEISTUNGSCODES_CFG_KEY);
+	private static final String CFG_BILLIGN_IGNORE_SUFFIX = "/ignoreForBilling";
 	Table table;
 	String[] tableCols = {
 		Messages.Leistungscodes_nameOfBillingSystem, Messages.Leistungscodes_billingSystem,
-		Messages.Leistungscodes_defaultOutput, Messages.Leistungscodes_multiplier
+		Messages.Leistungscodes_defaultOutput, Messages.Leistungscodes_multiplier,
+		Messages.Leistungscodes_forBilling
 	};
 	int[] tableWidths = {
-		60, 120, 120, 70
+		60, 120, 120, 70, 30
 	};
 	Button bCheckZero;
 	Button bStrictCheck;
@@ -122,6 +125,7 @@ public class Leistungscodes extends PreferencePage implements IWorkbenchPreferen
 					CoreHub.globalCfg.set(key + "/fakultativ", result[4]); //$NON-NLS-1$
 					CoreHub.globalCfg.set(key + "/unused", result[5]); //$NON-NLS-1$
 					CoreHub.globalCfg.set(key + "/disabled", result[6]); //$NON-NLS-1$
+					CoreHub.globalCfg.set(key + CFG_BILLIGN_IGNORE_SUFFIX, result[7]); //$NON-NLS-1$
 					systeme = CoreHub.globalCfg.nodes(Preferences.LEISTUNGSCODES_CFG_KEY);
 					reload();
 				}
@@ -148,6 +152,9 @@ public class Leistungscodes extends PreferencePage implements IWorkbenchPreferen
 			TableColumn tc = new TableColumn(table, SWT.NONE);
 			tc.setText(tableCols[i]);
 			tc.setWidth(tableWidths[i]);
+			if (i ==4) {
+				tc.setToolTipText(Messages.Leistungscodes_ignoreForBillingTooltip);
+			}
 		}
 		table.setLinesVisible(true);
 		table.setHeaderVisible(true);
@@ -160,7 +167,7 @@ public class Leistungscodes extends PreferencePage implements IWorkbenchPreferen
 					String ssel = sel.getText(0);
 					for (String s1 : systeme) {
 						if (s1.equals(ssel)) {
-							String[] pre = new String[7];
+							String[] pre = new String[RESULT_SIZE];
 							pre[0] = s1;
 							pre[1] = Fall.getCodeSystem(s1);
 							pre[2] = Fall.getDefaultPrintSystem(s1);
@@ -168,6 +175,7 @@ public class Leistungscodes extends PreferencePage implements IWorkbenchPreferen
 							pre[4] = Fall.getOptionals(s1);
 							pre[5] = Fall.getUnused(s1);
 							pre[6] = "" + isBillingSystemDisabled(s1); //$NON-NLS-1$
+							pre[7] = "" + isIgnoredForBilling(s1);//$NON-NLS-1$
 							AbrechnungsTypDialog at = new AbrechnungsTypDialog(getShell(), pre);
 							if (at.open() == Dialog.OK) {
 								String[] result = at.getResult();
@@ -179,6 +187,7 @@ public class Leistungscodes extends PreferencePage implements IWorkbenchPreferen
 								CoreHub.globalCfg.set(key + "/fakultativ", result[4]); //$NON-NLS-1$
 								CoreHub.globalCfg.set(key + "/unused", result[5]); //$NON-NLS-1$
 								CoreHub.globalCfg.set(key + "/disabled", result[6]); //$NON-NLS-1$
+								CoreHub.globalCfg.set(key + CFG_BILLIGN_IGNORE_SUFFIX, result[7]); //$NON-NLS-1$
 								systeme =
 									CoreHub.globalCfg.nodes(Preferences.LEISTUNGSCODES_CFG_KEY);
 								reload();
@@ -280,13 +289,28 @@ public class Leistungscodes extends PreferencePage implements IWorkbenchPreferen
 	
 	/**
 	 * returns true if the billing system specified by the param is DISabled else returns false
-	 * 
+	 *
 	 * @param billingSystem
 	 *            String, the name of the billing system to be tested
 	 */
 	public static boolean isBillingSystemDisabled(final String billingSystem){
 		String ret = CoreHub.globalCfg.get(Preferences.LEISTUNGSCODES_CFG_KEY + "/" //$NON-NLS-1$
 			+ billingSystem + "/disabled", "0"); //$NON-NLS-1$ //$NON-NLS-2$
+		if (ret.equalsIgnoreCase("0")) //$NON-NLS-1$
+			return false;
+		else
+			return true;
+	}
+
+	/**
+	 * returns true if the billing system specified by the param is ignored for billing purposes
+	 * 
+	 * @param billingSystem
+	 *            String, the name of the billing system to be tested
+	 */
+	public static boolean isIgnoredForBilling(final String billingSystem){
+		String ret = CoreHub.globalCfg.get(Preferences.LEISTUNGSCODES_CFG_KEY + "/" //$NON-NLS-1$
+			+ billingSystem + CFG_BILLIGN_IGNORE_SUFFIX, "0"); //$NON-NLS-1$ //$NON-NLS-2$
 		if (ret.equalsIgnoreCase("0")) //$NON-NLS-1$
 			return false;
 		else
@@ -320,6 +344,10 @@ public class Leistungscodes extends PreferencePage implements IWorkbenchPreferen
 					tp = "1.0"; //$NON-NLS-1$
 				}
 				it.setText(3, tp);
+				String ignored = CoreHub.globalCfg.get(cfgkey + CFG_BILLIGN_IGNORE_SUFFIX.replace("/", ""), "0");
+				it.setText(4, ignored.equals("1") ? //$NON-NLS-1$
+						ch.elexis.core.ui.views.rechnung.Messages.RnDialogs_no :
+						ch.elexis.core.ui.views.rechnung.Messages.RnDialogs_yes);
 			}
 		}
 	}
@@ -385,6 +413,7 @@ public class Leistungscodes extends PreferencePage implements IWorkbenchPreferen
 		String[] cChangeTypeItems;
 		String cCurrentFieldType;
 		String cBilllingSystemDisabled;
+		String cIgnoredForBilling;
 		
 		/**
 		 * 
@@ -604,7 +633,7 @@ public class Leistungscodes extends PreferencePage implements IWorkbenchPreferen
 		@Override
 		protected void okPressed(){
 			// *** build result String Array
-			result = new String[7];
+			result = new String[RESULT_SIZE];
 			result[0] = tName.getText();
 			result[1] =
 				(tTextEditor == null || tTextEditor.isDisposed()) ? StringTool.leer : tTextEditor
@@ -617,6 +646,7 @@ public class Leistungscodes extends PreferencePage implements IWorkbenchPreferen
 				(chStyled == null || chStyled.isDisposed()) ? "0" : ((chStyled.getSelection()) ? "1" : "0"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			result[5] = cCurrentFieldType;
 			result[6] = cBilllingSystemDisabled;
+			result[7] = cIgnoredForBilling;
 			
 			// *** do some validation: needs a name, some characters are not
 			// allowed, no duplicates are allowed
@@ -690,6 +720,7 @@ public class Leistungscodes extends PreferencePage implements IWorkbenchPreferen
 		Combo cbLstg;
 		Combo cbRechn;
 		Button cbDisabled;
+		Button cbIgnored;
 		Label lbTaxp;
 		String[] result;
 		MultiplikatorEditor mke;
@@ -759,6 +790,13 @@ public class Leistungscodes extends PreferencePage implements IWorkbenchPreferen
 			cbDisabled.setLayoutData(SWTHelper.getFillGridData(1, true, 1, false));
 			cbDisabled.setText(Messages.Leistungscodes_systemDisabled);
 			
+			// *** checkbox if system is ingored for billing
+			new Label(upperPartComp, SWT.NONE).setText(""); //$NON-NLS-1$
+			cbIgnored = new Button(upperPartComp, SWT.CHECK);
+			cbIgnored.setLayoutData(SWTHelper.getFillGridData(1, true, 1, false));
+			cbIgnored.setText(Messages.Leistungscodes_ignoreForBilling);
+			cbIgnored.setToolTipText(Messages.Leistungscodes_ignoreForBillingTooltip);
+
 			// *** separator
 			new Label(ret, SWT.SEPARATOR | SWT.HORIZONTAL).setLayoutData(SWTHelper.getFillGridData(
 				2, true, 1, false));
@@ -774,9 +812,14 @@ public class Leistungscodes extends PreferencePage implements IWorkbenchPreferen
 					|| (result[6].equalsIgnoreCase("0")) || (result[6].equalsIgnoreCase("false"))) //$NON-NLS-1$ //$NON-NLS-2$
 					checked = false;
 				cbDisabled.setSelection(checked);
+				boolean ignored = true;
+				if ((result[7] == null) || (result[7].isEmpty())
+						|| (result[7].equalsIgnoreCase("0")) || (result[7].equalsIgnoreCase("false"))) //$NON-NLS-1$ //$NON-NLS-2$
+					ignored = false;
+				cbIgnored.setSelection(ignored);
 				name = result[0];
 			}
-			
+
 			GridLayout grid1 = new GridLayout(1, false);
 			grid1.marginWidth = 0;
 			grid1.marginTop = 0;
@@ -960,7 +1003,7 @@ public class Leistungscodes extends PreferencePage implements IWorkbenchPreferen
 		 */
 		@Override
 		protected void okPressed(){
-			result = new String[7];
+			result = new String[RESULT_SIZE];
 			result[0] = tName.getText();
 			result[1] = cbLstg.getText();
 			result[2] = cbRechn.getText();
@@ -970,6 +1013,7 @@ public class Leistungscodes extends PreferencePage implements IWorkbenchPreferen
 				result[5] = StringTool.join(ldUnused.getAll(), DEFINITIONSDELIMITER);
 			}
 			result[6] = (cbDisabled.getSelection() == true) ? "1" : "0"; //$NON-NLS-1$ //$NON-NLS-2$
+			result[7] = (cbIgnored.getSelection() == true) ? "1" : "0"; //$NON-NLS-1$ //$NON-NLS-2$
 			if (bUseMultiForEigenleistung.getSelection()) {
 				if (!MultiplikatorList.isEigenleistungUseMulti(tName.getText())) {
 					MultiplikatorList.setEigenleistungUseMulti(tName.getText());

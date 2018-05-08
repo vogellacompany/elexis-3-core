@@ -54,6 +54,7 @@ public class Messages {
 	public static String KonsZumVerrechnenView_RealleCreateBillsCaption = ch.elexis.core.l10n.Messages.KonsZumVerrechnenView_RealleCreateBillsCaption;
 	public static String KonsZumVerrechnenView_ReallyCreateBillsBody = ch.elexis.core.l10n.Messages.KonsZumVerrechnenView_ReallyCreateBillsBody;
 	public static String KonsZumVerrechnenView_allOpenCons = ch.elexis.core.l10n.Messages.KonsZumVerrechnenView_allOpenCons;
+	public static String KonsZumVerrechnenView_allOpenConsTooltip = ch.elexis.core.l10n.Messages.KonsZumVerrechnenView_allOpenConsTooltip;
 	public static String KonsZumVerrechnenView_analyzeCons = ch.elexis.core.l10n.Messages.KonsZumVerrechnenView_analyzeCons;
 	public static String KonsZumVerrechnenView_autoAction = ch.elexis.core.l10n.Messages.KonsZumVerrechnenView_autoAction;
 	public static String KonsZumVerrechnenView_autoToolTip = ch.elexis.core.l10n.Messages.KonsZumVerrechnenView_autoToolTip;

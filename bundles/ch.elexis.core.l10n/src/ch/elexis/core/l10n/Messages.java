@@ -97,6 +97,7 @@ public class Messages extends NLS {
 	public static String KonsZumVerrechnenView_RealleCreateBillsCaption;
 	public static String KonsZumVerrechnenView_ReallyCreateBillsBody;
 	public static String KonsZumVerrechnenView_allOpenCons;
+	public static String KonsZumVerrechnenView_allOpenConsTooltip;
 	public static String KonsZumVerrechnenView_analyzeCons;
 	public static String KonsZumVerrechnenView_autoAction;
 	public static String KonsZumVerrechnenView_autoToolTip;
@@ -2273,6 +2274,9 @@ public class Messages extends NLS {
 	public static String Leistungscodes_contactHL;
 	public static String Leistungscodes_date;
 	public static String Leistungscodes_dateHL;
+	public static String Leistungscodes_forBilling;
+	public static String Leistungscodes_ignoreForBilling;
+	public static String Leistungscodes_ignoreForBillingTooltip;
 	public static String Leistungscodes_defaultOutput;
 	public static String Leistungscodes_defaultOutputLabel;
 	public static String Leistungscodes_defineBillingSystem;

@@ -837,6 +837,15 @@ public class Fall extends PersistentObject implements IFall, ITransferable<FallD
 		}
 		return ret;
 	}
+
+	public boolean ignoreForBilling(final String billingSystem){
+		String ret = CoreHub.globalCfg.get(Preferences.LEISTUNGSCODES_CFG_KEY + "/" //$NON-NLS-1$
+			+ billingSystem + "/ignoreForBilling", null); //$NON-NLS-1$
+		if (ret == null) {
+			return false;
+		}
+		return ret.contentEquals("0") ? false : true;
+	}
 	
 	public static String getDefaultPrintSystem(final String billingSystem){
 		String ret = CoreHub.globalCfg.get(Preferences.LEISTUNGSCODES_CFG_KEY + "/" //$NON-NLS-1$

@@ -173,7 +173,9 @@ public class Messages {
 	public static String Leistungscodes_contactHL = ch.elexis.core.l10n.Messages.Leistungscodes_contactHL;
 	public static String Leistungscodes_date = ch.elexis.core.l10n.Messages.Leistungscodes_date;
 	public static String Leistungscodes_dateHL = ch.elexis.core.l10n.Messages.Leistungscodes_dateHL;
+	public static String Leistungscodes_forBilling = ch.elexis.core.l10n.Messages.Leistungscodes_forBilling;
 	public static String Leistungscodes_defaultOutput = ch.elexis.core.l10n.Messages.Leistungscodes_defaultOutput;
+	public static String Leistungscodes_ignoreForBillingTooltip = ch.elexis.core.l10n.Messages.Leistungscodes_ignoreForBillingTooltip;
 	public static String Leistungscodes_defaultOutputLabel = ch.elexis.core.l10n.Messages.Leistungscodes_defaultOutputLabel;
 	public static String Leistungscodes_defineBillingSystem = ch.elexis.core.l10n.Messages.Leistungscodes_defineBillingSystem;
 	public static String Leistungscodes_definitionAlreadyExistsInDestination = ch.elexis.core.l10n.Messages.Leistungscodes_definitionAlreadyExistsInDestination;
@@ -217,6 +219,7 @@ public class Messages {
 	public static String Leistungscodes_separateObligations = ch.elexis.core.l10n.Messages.Leistungscodes_separateObligations;
 
 	public static String Leistungscodes_strictValidityCheck = ch.elexis.core.l10n.Messages.Leistungscodes_strictValidityCheck;
+	public static String Leistungscodes_ignoreForBilling = ch.elexis.core.l10n.Messages.Leistungscodes_ignoreForBilling;
 	public static String Leistungscodes_systemDisabled = ch.elexis.core.l10n.Messages.Leistungscodes_systemDisabled;
 	public static String Leistungscodes_text = ch.elexis.core.l10n.Messages.Leistungscodes_text;
 	public static String Leistungscodes_textHL = ch.elexis.core.l10n.Messages.Leistungscodes_textHL;
