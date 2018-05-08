@@ -46,9 +46,11 @@ public class Test_KontaktUtil extends AbstractPersistentObjectTest {
 	// "Alle Daten der ausgewählten Kontakte jeweils als Einzeiler in die Zwischenablage kopieren"
 
 	final static String expectedPostanschriftWithPhone =
-		"Herr, Dr. med. Andreas Baumgartner, Marktgasse 1, CH - 3800 Interlaken, 033 822 02 02, 079 335 66 33, Fax: 033 822 02 03, baumgartner.praxis@hin.ch, www.baumgartner.ch";
+			ch.elexis.core.data.util.Messages.KontakteView_SalutationM +
+			", Dr. med. Andreas Baumgartner, Marktgasse 1, CH - 3800 Interlaken, 033 822 02 02, 079 335 66 33, Fax: 033 822 02 03, baumgartner.praxis@hin.ch, www.baumgartner.ch";
 	final String expectedPostanschriftWithoutPhone =
-		"Herr, Dr. med. Andreas Baumgartner, Marktgasse 1, CH - 3800 Interlaken, Fax: 033 822 02 03, baumgartner.praxis@hin.ch, www.baumgartner.ch";
+			ch.elexis.core.data.util.Messages.KontakteView_SalutationM +
+			", Dr. med. Andreas Baumgartner, Marktgasse 1, CH - 3800 Interlaken, Fax: 033 822 02 03, baumgartner.praxis@hin.ch, www.baumgartner.ch";
 	
 	
 	final static String[] fieldnames = {
@@ -157,7 +159,8 @@ public class Test_KontaktUtil extends AbstractPersistentObjectTest {
 		k_Mustermann.setAnschrift(new ch.elexis.data.Anschrift(k_Baumgartner)); // Must be called before calling getAnschrift
 		String res = KontaktUtil.getPostAnschriftPhoneFaxEmail(k_Mustermann, false, true);
 		String res2 = KontaktUtil.getPostAnschriftPhoneFaxEmail(k_Baumgartner, false, true);
-		Assert.assertEquals("Herr, Max Mustermann, Marktgasse 1, CH - 3800 Interlaken", res);
+		Assert.assertEquals(ch.elexis.core.data.util.Messages.KontakteView_SalutationM +
+				", Max Mustermann, Marktgasse 1, CH - 3800 Interlaken", res);
 		Assert.assertEquals(expectedPostanschriftWithPhone, res2);
 	}
 	@Test
@@ -169,7 +172,7 @@ public class Test_KontaktUtil extends AbstractPersistentObjectTest {
 	@Test
 	public void testMustermannrPhoneFaxOnelinerWithPhone(){
 		String res = KontaktUtil.getPostAnschriftPhoneFaxEmail(k_Mustermann, false, true);
-		Assert.assertEquals("Herr, Max Mustermann", res);
+		Assert.assertEquals(ch.elexis.core.data.util.Messages.KontakteView_SalutationM + ", Max Mustermann", res);
 	}
 	
 	@Test
@@ -182,7 +185,8 @@ public class Test_KontaktUtil extends AbstractPersistentObjectTest {
 	
 	// PD_OHNE_Mobil_einzeilig_an_Zwischenablage
 	final String expectedPersonalia =
-		"Herr Dr. med. Andreas Baumgartner, Facharzt FMH für Gastroenterologie u. Innere Medizin, 01.01.1980, " +
+			ch.elexis.core.data.util.Messages.KontakteView_SalutationM +
+			" Dr. med. Andreas Baumgartner, Facharzt FMH für Gastroenterologie u. Innere Medizin, 01.01.1980, " +
 			"Marktgasse 1, CH-3800 Interlaken, 033 822 02 02, Fax 033 822 02 03, "+
 			"baumgartner.praxis@hin.ch, www.baumgartner.ch, Sprechstunden nur nach Vereinbarung";
 	
