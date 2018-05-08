@@ -11,6 +11,18 @@ package ch.elexis.core.ui.views;
 
 public class Messages {
 	
+	public static String Kontakte_copyDataWithMobile = ch.elexis.core.l10n.Messages.Kontakte_copyDataWithMobile;
+	public static String Kontakte_copyDataWithMobileOneLine = ch.elexis.core.l10n.Messages.Kontakte_copyDataWithMobileOneLine;
+	public static String Kontakte_copyDataWithoutMobile = ch.elexis.core.l10n.Messages.Kontakte_copyDataWithoutMobile;
+	public static String Kontakte_copyDataWithoutMobileOneLine = ch.elexis.core.l10n.Messages.Kontakte_copyDataWithoutMobileOneLine;
+	public static String Kontakte_copySelectedContactInfosToClipboard = ch.elexis.core.l10n.Messages.Kontakte_copySelectedContactInfosToClipboard;
+	public static String Kontakte_copySelectedContactInfosToClipboardOneLine = ch.elexis.core.l10n.Messages.Kontakte_copySelectedContactInfosToClipboardOneLine;
+	public static String Kontakte_copySelectedAddressesToClipboard = ch.elexis.core.l10n.Messages.Kontakte_copySelectedAddressesToClipboard;
+	public static String Patient_copyPostalAddressToClipboard = ch.elexis.core.l10n.Messages.Patient_copyPostalAddressToClipboard;
+	public static String Patient_copyPostalAddressToClipboardMenu = ch.elexis.core.l10n.Messages.Patient_copyPostalAddressToClipboardMenu;
+	public static String Patient_copySelectedPatInfosToClipboard = ch.elexis.core.l10n.Messages.Patient_copySelectedPatInfosToClipboard;
+	public static String Patient_copySelectedAddressesToClipboard = ch.elexis.core.l10n.Messages.Patient_copySelectedAddressesToClipboard;
+	public static String Patient_copySelectedPatInfosToClipboardOneLine = ch.elexis.core.l10n.Messages.Patient_copySelectedPatInfosToClipboardOneLine;
 	public static String AUF2_NoPatientSelected = ch.elexis.core.l10n.Messages.AUF2_NoPatientSelected;
 	public static String AUF2_PleaseDoSelectPatient = ch.elexis.core.l10n.Messages.AUF2_PleaseDoSelectPatient;
 	public static String AUF2_certificate = ch.elexis.core.l10n.Messages.AUF2_certificate;

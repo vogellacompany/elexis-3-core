@@ -696,6 +696,11 @@ public class Messages extends NLS {
 	public static String NeuerFallDialog_newCase;
 	public static String FallEditDialog_editCase;
 	public static String FallEditDialog_enterCaseData;
+	public static String Patient_copyPostalAddressToClipboard;
+	public static String Patient_copyPostalAddressToClipboardMenu;
+	public static String Patient_copySelectedPatInfosToClipboard;
+	public static String Patient_copySelectedAddressesToClipboard;
+	public static String Patient_copySelectedPatInfosToClipboardOneLine;
 	public static String PatientErfassenDialog_Name;
 	public static String PatientErfassenDialog_birthDate;
 	public static String PatientErfassenDialog_city;
@@ -1047,7 +1052,14 @@ public class Messages extends NLS {
 	public static String KontaktBlatt_LawCode;
 	public static String KontaktBlatt_Group;
 	public static String KontaktBlatt_Allergies;
-	
+	public static String Kontakte_copyDataWithoutMobile;
+	public static String Kontakte_copyDataWithoutMobileOneLine;
+	public static String Kontakte_copyDataWithMobile;
+	public static String Kontakte_copyDataWithMobileOneLine;
+	public static String Kontakte_copySelectedContactInfosToClipboard;
+	public static String Kontakte_copySelectedContactInfosToClipboardOneLine;
+	public static String Kontakte_copySelectedAddressesToClipboard;
+
 	public static String KontakteView_create;
 	public static String KontakteView_delete;
 	public static String KontakteView_duplicate;

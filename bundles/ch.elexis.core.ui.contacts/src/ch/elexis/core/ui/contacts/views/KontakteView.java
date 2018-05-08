@@ -19,21 +19,26 @@ import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.dnd.Clipboard;
+import org.eclipse.swt.dnd.TextTransfer;
+import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.ISaveablePart2;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.part.ViewPart;
-
 import ch.elexis.admin.AccessControlDefaults;
 import ch.elexis.core.constants.StringConstants;
 import ch.elexis.core.data.events.ElexisEventDispatcher;
 import ch.elexis.core.data.status.ElexisStatus;
+import ch.elexis.core.data.util.KontaktUtil;
+import ch.elexis.core.ui.UiDesk;
 import ch.elexis.core.ui.actions.FlatDataLoader;
 import ch.elexis.core.ui.actions.GlobalActions;
 import ch.elexis.core.ui.actions.PersistentObjectLoader;
 import ch.elexis.core.ui.contacts.Activator;
+import ch.elexis.core.ui.contacts.actions.ContactActions;
 import ch.elexis.core.ui.dialogs.GenericPrintDialog;
 import ch.elexis.core.ui.dialogs.KontaktErfassenDialog;
 import ch.elexis.core.ui.icons.Images;
@@ -47,6 +52,7 @@ import ch.elexis.core.ui.util.viewers.SimpleWidgetProvider;
 import ch.elexis.core.ui.util.viewers.ViewerConfigurer;
 import ch.elexis.core.ui.util.viewers.ViewerConfigurer.ControlFieldListener;
 import ch.elexis.core.ui.views.Messages;
+import ch.elexis.data.BezugsKontakt;
 import ch.elexis.data.Kontakt;
 import ch.elexis.data.Organisation;
 import ch.elexis.data.PersistentObject;
@@ -58,15 +64,23 @@ public class KontakteView extends ViewPart implements ControlFieldListener, ISav
 	public static final String ID = "ch.elexis.Kontakte"; //$NON-NLS-1$
 	private CommonViewer cv;
 	private ViewerConfigurer vc;
-	IAction dupKontakt, delKontakt, createKontakt, printList;
+
+	IAction dupKontakt, delKontakt, createKontakt, printList,
+		tidySelectedAddressesAction,
+		copyKontactWithMobileOneLiner,
+		copyKontactWithMobile,
+		copyKontactWithoutMobileOneLiner,
+		copyKontactWithoutMobile,
+		copyPostalAddress;
+
 	PersistentObjectLoader loader;
 
-	private final String[] fields = { Kontakt.FLD_SHORT_LABEL + Query.EQUALS + Messages.KontakteView_shortLabel, // $NON-NLS-1$
-			Kontakt.FLD_NAME1 + Query.EQUALS + Messages.KontakteView_text1, // $NON-NLS-1$
-			Kontakt.FLD_NAME2 + Query.EQUALS + Messages.KontakteView_text2, // $NON-NLS-1$
-			Kontakt.FLD_STREET + Query.EQUALS + Messages.KontakteView_street, // $NON-NLS-1$
-			Kontakt.FLD_ZIP + Query.EQUALS + Messages.KontakteView_zip, // $NON-NLS-1$
-			Kontakt.FLD_PLACE + Query.EQUALS + Messages.KontakteView_place }; // $NON-NLS-1$
+	private final String[] fields = { Kontakt.FLD_SHORT_LABEL + Query.EQUALS + Messages.KontakteView_shortLabel,
+			Kontakt.FLD_NAME1 + Query.EQUALS + Messages.KontakteView_text1,
+			Kontakt.FLD_NAME2 + Query.EQUALS + Messages.KontakteView_text2,
+			Kontakt.FLD_STREET + Query.EQUALS + Messages.KontakteView_street,
+			Kontakt.FLD_ZIP + Query.EQUALS + Messages.KontakteView_zip,
+			Kontakt.FLD_PLACE + Query.EQUALS + Messages.KontakteView_place };
 	private ViewMenus menu;
 
 	public KontakteView() {
@@ -86,15 +100,31 @@ public class KontakteView extends ViewPart implements ControlFieldListener, ISav
 		makeActions();
 		cv.setObjectCreateAction(getViewSite(), createKontakt);
 		menu = new ViewMenus(getViewSite());
+
+		tidySelectedAddressesAction = ContactActions.getTidySelectedAddressesAction(cv.getViewerWidget());
+		copyKontactWithoutMobile = ContactActions.contactDataWithoutEmail(cv.getViewerWidget());
+		copyKontactWithoutMobileOneLiner = ContactActions.contactDataWithoutEmailAsOneliner(cv.getViewerWidget());
+		copyKontactWithMobile = ContactActions.contactDataWithEmail(cv.getViewerWidget());
+		copyKontactWithMobileOneLiner = ContactActions.contactDataWithEmailAsOneLiner(cv.getViewerWidget());
 		menu.createViewerContextMenu(cv.getViewerWidget(), delKontakt, dupKontakt);
+		menu.createMenu(tidySelectedAddressesAction);
+		menu.createMenu(copyKontactWithoutMobileOneLiner);
+		menu.createMenu(copyKontactWithoutMobile);
+		menu.createMenu(copyKontactWithMobileOneLiner);
+		menu.createMenu(copyKontactWithMobile);
+		menu.createMenu(copyPostalAddress);
 		menu.createMenu(printList);
+		
+		menu.createToolbar(tidySelectedAddressesAction);
+		menu.createToolbar(copyKontactWithoutMobileOneLiner);
+		menu.createToolbar(copyKontactWithoutMobile);
 		menu.createToolbar(printList);
 		vc.getContentProvider().startListening();
 		vc.getControlFieldProvider().addChangeListener(this);
 		cv.addDoubleClickListener(new CommonViewer.DoubleClickListener() {
 			public void doubleClicked(PersistentObject obj, CommonViewer cv) {
 				try {
-					KontaktDetailView kdv = (KontaktDetailView) getSite().getPage().showView(KontaktDetailView.ID);
+					getSite().getPage().showView(KontaktDetailView.ID);
 					ElexisEventDispatcher.fireSelectionEvent(obj);
 					//					kdv.kb.catchElexisEvent(new ElexisEvent(obj, obj.getClass(), ElexisEvent.EVENT_SELECTED));
 				} catch (PartInitException e) {
@@ -194,7 +224,7 @@ public class KontakteView extends ViewPart implements ControlFieldListener, ISav
 				return (Kontakt) cv.getViewerWidgetFirstSelection();
 			}
 		};
-		dupKontakt = new Action(Messages.KontakteView_duplicate) { // $NON-NLS-1$
+		dupKontakt = new Action(Messages.KontakteView_duplicate) {
 			@Override
 			public void run() {
 				Object[] o = cv.getSelection();
@@ -214,7 +244,7 @@ public class KontakteView extends ViewPart implements ControlFieldListener, ISav
 				}
 			}
 		};
-		createKontakt = new Action(Messages.KontakteView_create) { // $NON-NLS-1$
+		createKontakt = new Action(Messages.KontakteView_create) {
 			@Override
 			public void run() {
 				String[] flds = cv.getConfigurer().getControlFieldProvider().getValues();
@@ -254,6 +284,34 @@ public class KontakteView extends ViewPart implements ControlFieldListener, ISav
 					gpl.open();
 				}
 			}
+		};
+		copyPostalAddress = new Action(Messages.Patient_copyPostalAddressToClipboard) {
+			{
+				setImageDescriptor(Images.IMG_CLIPBOARD.getImageDescriptor());
+				setToolTipText(Messages.Patient_copyPostalAddressToClipboard);
+			}
+			@Override
+			public void run(){
+				Object[] sel = cv.getSelection();
+				if (sel != null && sel.length > 0) {
+					Kontakt k = (Kontakt) sel[0];
+					if (k == null) {
+						return;
+					}
+					StringBuffer selectedAddressesText = new StringBuffer();
+					selectedAddressesText.append(KontaktUtil.getPostAnschriftPhoneFaxEmail(k, true, false));
+					Clipboard clipboard = new Clipboard(UiDesk.getDisplay());
+					TextTransfer textTransfer = TextTransfer.getInstance();
+					Transfer[] transfers = new Transfer[] {
+						textTransfer
+					};
+					Object[] data = new Object[] {
+						selectedAddressesText.toString()
+					};
+					clipboard.setContents(data, transfers);
+					clipboard.dispose();
+				}
+			};
 		};
 	}
 
