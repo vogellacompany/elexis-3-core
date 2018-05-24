@@ -575,7 +575,7 @@ public class KontaktUtil {
 	 * 
 	 * @param multiline
 	 *            or single line output
-	 * @param including_phone
+	 * @param include_mobile
 	 *            controls whether the phone numbers shall be
 	 * 
 	 * @return string containing the needed information
@@ -595,7 +595,7 @@ public class KontaktUtil {
 	 * succeeding address. openoffice 2.0.3: "new line" after each line within an address;
 	 * "new paragraph" after the Fax number and before a succeeding address.
 	 */
-	public static String getPostAnschriftPhoneFaxEmail(Kontakt k, boolean multiline, boolean including_phone){
+	public static String getPostAnschriftPhoneFaxEmail(Kontakt k, boolean multiline, boolean include_mobile){
 		
 		StringBuffer thisAddress = new StringBuffer();
 		String lf = System.getProperty("line.separator");
@@ -612,33 +612,23 @@ public class KontaktUtil {
 		// muss man ihn hier wieder ergänzen. Aber vorher ausschliessen, dass
 		// PostAnschrift nicht leer ist, oder dass doch schon ein lineSeparator dran hängt.
 		String anschrift = k.getPostAnschrift(true).trim();
+		if (!multiline) {
+			// In this case we must replace "Herr," by "Herr"
+			anschrift = anschrift.replaceFirst(lf, StringTool.space);
+		}
 		thisAddress.append(anschrift);
 		
-		// && !k.FLD_FAX.isEmpty() is NOT sufficient to prevent empty lines, or lines with just the
-		// Labels "Fax" and "E-Mail".
-		// Apparently, the entries "Fax" or "E-Mail" exist in the respective fields instead of
-		// proper content.
-		//
-		// THIS DOES NOT WORK:
-		//
-		// if (k.FLD_FAX != null && k.FLD_FAX.length()>0 && !k.FLD_FAX.equals("Fax")) {
-		// selectedAddressesText.append(k.FLD_FAX+System.getProperty("line.separator"));
-		// }
-		// if (k.FLD_E_MAIL != null && k.FLD_E_MAIL.length()>0 && !k.FLD_E_MAIL.equals("E-Mail")) {
-		// selectedAddressesText.append(k.FLD_E_MAIL+System.getProperty("line.separator"));
-		// }
-		//
-		if (including_phone) {
-			String thisAddressFLD_PHONE1 = (String) k.get(Kontakt.FLD_PHONE1);
-			if (!StringTool.isNothing(thisAddressFLD_PHONE1)) {
-				thisAddress.append(lf).append(thisAddressFLD_PHONE1);
-			}
+		String thisAddressFLD_PHONE1 = (String) k.get(Kontakt.FLD_PHONE1);
+		if (!StringTool.isNothing(thisAddressFLD_PHONE1)) {
+			thisAddress.append(lf).append(thisAddressFLD_PHONE1);
+		}
+		
+		String thisAddressFLD_PHONE2 = (String) k.get(Kontakt.FLD_PHONE2);
+		if (!StringTool.isNothing(thisAddressFLD_PHONE2)) {
+			thisAddress.append(lf).append(thisAddressFLD_PHONE2);
+		}
 			
-			String thisAddressFLD_PHONE2 = (String) k.get(Kontakt.FLD_PHONE2);
-			if (!StringTool.isNothing(thisAddressFLD_PHONE2)) {
-				thisAddress.append(lf).append(thisAddressFLD_PHONE2);
-			}
-			
+		if (include_mobile) {
 			String thisAddressFLD_MOBILEPHONE = (String) k.get(Kontakt.FLD_MOBILEPHONE);
 			if (!StringTool.isNothing(thisAddressFLD_MOBILEPHONE)) {
 				thisAddress.append(lf).append(thisAddressFLD_MOBILEPHONE);

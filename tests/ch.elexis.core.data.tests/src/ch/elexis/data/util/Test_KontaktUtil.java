@@ -50,8 +50,7 @@ public class Test_KontaktUtil extends AbstractPersistentObjectTest {
 			", Dr. med. Andreas Baumgartner, Marktgasse 1, CH - 3800 Interlaken, 033 822 02 02, 079 335 66 33, Fax: 033 822 02 03, baumgartner.praxis@hin.ch, www.baumgartner.ch";
 	final String expectedPostanschriftWithoutPhone =
 			ch.elexis.core.data.util.Messages.KontakteView_SalutationM +
-			", Dr. med. Andreas Baumgartner, Marktgasse 1, CH - 3800 Interlaken, Fax: 033 822 02 03, baumgartner.praxis@hin.ch, www.baumgartner.ch";
-	
+			", Dr. med. Andreas Baumgartner, Marktgasse 1, CH - 3800 Interlaken, 033 822 02 02, Fax: 033 822 02 03, baumgartner.praxis@hin.ch, www.baumgartner.ch";
 	
 	final static String[] fieldnames = {
 		Patient.FLD_NAME, Patient.FLD_NAME1, Patient.FLD_NAME2, Patient.FLD_NAME3,
@@ -144,7 +143,10 @@ public class Test_KontaktUtil extends AbstractPersistentObjectTest {
 	public void testPhoneFaxOnelinerWithoutPhone(){
 		k_Baumgartner.set(Kontakt.FLD_ANSCHRIFT, null);
 		String res = KontaktUtil.getPostAnschriftPhoneFaxEmail(p_Baumgartner, false, false);
-		Assert.assertEquals(expectedPostanschriftWithoutPhone, res);
+		String expected = expectedPostanschriftWithoutPhone.replace(
+			ch.elexis.core.data.util.Messages.KontakteView_SalutationM + ",",
+			ch.elexis.core.data.util.Messages.KontakteView_SalutationM);
+		Assert.assertEquals(expected, res);
 	}
 	
 	@Test
@@ -160,19 +162,25 @@ public class Test_KontaktUtil extends AbstractPersistentObjectTest {
 		String res = KontaktUtil.getPostAnschriftPhoneFaxEmail(k_Mustermann, false, true);
 		String res2 = KontaktUtil.getPostAnschriftPhoneFaxEmail(k_Baumgartner, false, true);
 		Assert.assertEquals(ch.elexis.core.data.util.Messages.KontakteView_SalutationM +
-				", Max Mustermann, Marktgasse 1, CH - 3800 Interlaken", res);
-		Assert.assertEquals(expectedPostanschriftWithPhone, res2);
+				" Max Mustermann, Marktgasse 1, CH - 3800 Interlaken", res);
+		String expected = expectedPostanschriftWithPhone.replace(
+			ch.elexis.core.data.util.Messages.KontakteView_SalutationM + ",",
+			ch.elexis.core.data.util.Messages.KontakteView_SalutationM);
+		Assert.assertEquals(expected, res2);
 	}
 	@Test
 	public void testBaumgartnerPhoneFaxOnelinerWithPhone(){
 		String res = KontaktUtil.getPostAnschriftPhoneFaxEmail(k_Baumgartner, false, true);
-		Assert.assertEquals(expectedPostanschriftWithPhone, res);
+		String expected = expectedPostanschriftWithPhone.replace(
+			ch.elexis.core.data.util.Messages.KontakteView_SalutationM + ",",
+			ch.elexis.core.data.util.Messages.KontakteView_SalutationM);
+		Assert.assertEquals(expected, res);
 	}
 	
 	@Test
 	public void testMustermannrPhoneFaxOnelinerWithPhone(){
 		String res = KontaktUtil.getPostAnschriftPhoneFaxEmail(k_Mustermann, false, true);
-		Assert.assertEquals(ch.elexis.core.data.util.Messages.KontakteView_SalutationM + ", Max Mustermann", res);
+		Assert.assertEquals(ch.elexis.core.data.util.Messages.KontakteView_SalutationM + " Max Mustermann", res);
 	}
 	
 	@Test
