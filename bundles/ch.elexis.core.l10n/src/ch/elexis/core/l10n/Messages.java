@@ -768,6 +768,7 @@ public class Messages extends NLS {
 	
 	public static String Leistungscodes_removeOpenReminders;
 	public static String Leistungscodes_separateObligations;
+	public static String Leistungscodes_defaultLawLabel;
 
 	public static String LogbackConfigDetails;
 	public static String LogbackConfigDefault;
@@ -963,6 +964,8 @@ public class Messages extends NLS {
 	public static String FallDetailBlatt2_unusedFieldsWithDefinition;
 	public static String FallDetailBlatt2_unusedFieldsWithoutDefinition;
 	public static String FallDetailBlatt2_CopyToPatient;
+	public static String FallDetailBlatt2_SelectCostBearerCaption;
+	public static String FallDetailBlatt2_SelectCostBearerBody;
 	public static String FallListeView_Cases;
 	public static String FallListeView_Date;
 	public static String FallListeView_Illness;
@@ -1875,6 +1878,7 @@ public class Messages extends NLS {
 	public static String EigenartikelTyp_PHARMA;
 	public static String EigenartikelTyp_UNKNOWN;
 	public static String EigenartikelTyp_COMPLEMENTARY; 
+	public static String EigenartikelTyp_ADDITIVE;
 	public static String EigendiagnoseSelector_Shortcut_Label;
 	public static String EigendiagnoseSelector_Text_Label;
 	public static String Eigendiagnosen_BadFileFormat;
@@ -2259,6 +2263,8 @@ public class Messages extends NLS {
 	public static String Leistungscodes_billingSystemCaption;
 	public static String Leistungscodes_billingSystemLabel;
 	public static String Leistungscodes_billingSystems;
+	public static String Leistungscodes_maskCostBearer;
+	public static String Leistungscodes_useMultiplierForCustomServices;
 	public static String Leistungscodes_caseConstants;
 	public static String Leistungscodes_changeFieldTypeTo;
 	public static String Leistungscodes_changeTextInTitleBar;

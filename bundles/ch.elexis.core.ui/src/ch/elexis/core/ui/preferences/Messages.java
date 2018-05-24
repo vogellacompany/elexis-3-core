@@ -177,6 +177,7 @@ public class Messages {
 	public static String Leistungscodes_defaultOutput = ch.elexis.core.l10n.Messages.Leistungscodes_defaultOutput;
 	public static String Leistungscodes_ignoreForBillingTooltip = ch.elexis.core.l10n.Messages.Leistungscodes_ignoreForBillingTooltip;
 	public static String Leistungscodes_defaultOutputLabel = ch.elexis.core.l10n.Messages.Leistungscodes_defaultOutputLabel;
+	public static String Leistungscodes_defaultLawLabel = ch.elexis.core.l10n.Messages.Leistungscodes_defaultLawLabel;
 	public static String Leistungscodes_defineBillingSystem = ch.elexis.core.l10n.Messages.Leistungscodes_defineBillingSystem;
 	public static String Leistungscodes_definitionAlreadyExistsInDestination = ch.elexis.core.l10n.Messages.Leistungscodes_definitionAlreadyExistsInDestination;
 	public static String Leistungscodes_definitionAlreadyExistsSomewhere = ch.elexis.core.l10n.Messages.Leistungscodes_definitionAlreadyExistsSomewhere;
@@ -190,6 +191,8 @@ public class Messages {
 	public static String Leistungscodes_explainEntry = ch.elexis.core.l10n.Messages.Leistungscodes_explainEntry;
 	public static String Leistungscodes_list = ch.elexis.core.l10n.Messages.Leistungscodes_list;
 	public static String Leistungscodes_listHL = ch.elexis.core.l10n.Messages.Leistungscodes_listHL;
+	public static String Leistungscodes_maskCostBearer = ch.elexis.core.l10n.Messages.Leistungscodes_maskCostBearer;
+	public static String Leistungscodes_useMultiplierForCustomServices = ch.elexis.core.l10n.Messages.Leistungscodes_useMultiplierForCustomServices;
 	public static String Leistungscodes_moveItemDown = ch.elexis.core.l10n.Messages.Leistungscodes_moveItemDown;
 	public static String Leistungscodes_moveItemToOptionalData = ch.elexis.core.l10n.Messages.Leistungscodes_moveItemToOptionalData;
 	public static String Leistungscodes_moveItemToRequiredData = ch.elexis.core.l10n.Messages.Leistungscodes_moveItemToRequiredData;
