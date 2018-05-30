@@ -2328,6 +2328,7 @@ public class Messages extends NLS {
 	public static String Leistungscodes_textMultipleLines;
 	public static String Leistungscodes_textStyled;
 	public static String Leistungscodes_unusedData;
+	public static String Leistungscodes_useForBilling;
 	public static String LoginDialog_0;
 	public static String LoginDialog_1;
 	public static String LoginDialog_4;

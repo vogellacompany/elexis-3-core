@@ -25,6 +25,7 @@ import ch.elexis.core.constants.StringConstants;
 import ch.elexis.core.data.events.ElexisEventDispatcher;
 import ch.elexis.core.data.status.ElexisStatus;
 import ch.elexis.core.ui.commands.Handler;
+import ch.elexis.data.BillingSystem;
 import ch.elexis.data.Fall;
 import ch.elexis.data.Konsultation;
 import ch.elexis.data.Mandant;
@@ -135,10 +136,15 @@ public class Rechnungslauf implements IRunnableWithProgress {
 				continue;
 			}
 			
-			// skip if fall is not set or inexisting
+			// skip if fall is not set or not existing
 			Fall fall = k.getFall();
 			if ((fall == null) || (!fall.exists())) {
 				log.warn("...skip Kons [" + k.getId() + "] fall is null/inexisting");
+				continue;
+			}
+			
+			if (BillingSystem.ignoreForBilling(fall.getAbrechnungsSystem())) {
+				log.warn("...skip Kons [" + k.getId() + "] as fall " + fall.getAbrechnungsSystem() + " ignoreForBilling");
 				continue;
 			}
 			

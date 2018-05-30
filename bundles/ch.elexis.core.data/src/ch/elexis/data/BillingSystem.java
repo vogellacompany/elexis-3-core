@@ -393,6 +393,18 @@ public class BillingSystem {
 	}
 	
 	/**
+	 *
+	 * @param billingSystemName
+	 * @return whether invoicing should ignore values from this billingSystem
+	 * @since 3.6
+	 */
+    public static boolean ignoreForBilling(final String billingSystemName){
+		String ret = CoreHub.globalCfg.get(Preferences.LEISTUNGSCODES_CFG_KEY + "/" //$NON-NLS-1$
+			+ billingSystemName + "/ignoreForBilling", "0"); //$NON-NLS-1$ //$NON-NLS-2$
+		return !ret.equalsIgnoreCase("0");
+    }
+
+	/**
 	 * 
 	 * @param billingSystem
 	 * @return

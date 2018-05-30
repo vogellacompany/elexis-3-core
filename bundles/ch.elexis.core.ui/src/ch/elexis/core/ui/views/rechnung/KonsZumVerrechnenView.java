@@ -88,6 +88,7 @@ import ch.elexis.core.ui.util.viewers.SimpleWidgetProvider;
 import ch.elexis.core.ui.util.viewers.ViewerConfigurer;
 import ch.elexis.core.ui.views.FallDetailView;
 import ch.elexis.core.ui.views.KonsDetailView;
+import ch.elexis.data.BillingSystem;
 import ch.elexis.data.Brief;
 import ch.elexis.data.Fall;
 import ch.elexis.data.Konsultation;
@@ -349,8 +350,7 @@ public class KonsZumVerrechnenView extends ViewPart implements ISaveablePart2 {
 									while ((rs != null) && rs.next()) {
 										Patient p = Patient.load(rs.getString(1));
 										Fall fall = Fall.load(rs.getString(2));
-										if (fall.ignoreForBilling(fall.getAbrechnungsSystem())) {
-											System.out.println("...skip FindOpenCons "  + p.getPersonalia() + " for case " + fall.getAbrechnungsSystem());
+										if (BillingSystem.ignoreForBilling(fall.getAbrechnungsSystem())) {
 											continue;
 										} else { if (p.exists() && (tSelection.find(p, false) == null)) {
 											new LazyTree(l, p, self);
@@ -386,7 +386,7 @@ public class KonsZumVerrechnenView extends ViewPart implements ISaveablePart2 {
 							String s = rs.getString(1);
 							Fall f = Fall.load(s);
 							if (f != null  && f.exists() ) {
-								if (f.ignoreForBilling(f.getAbrechnungsSystem())) {
+								if (BillingSystem.ignoreForBilling(f.getAbrechnungsSystem())) {
 									System.out.println("...skip FindOpenCons 2 for case " + f.getAbrechnungsSystem());
 								} else { if ((tSelection.find(f, true) == null)) {
 									new LazyTree(l, f, this);
@@ -406,7 +406,7 @@ public class KonsZumVerrechnenView extends ViewPart implements ISaveablePart2 {
 							Konsultation b = Konsultation.load(s);
 							if (b.exists()) {
 								Fall f = b.getFall();
-								if (f.ignoreForBilling(f.getAbrechnungsSystem())) {
+								if (BillingSystem.ignoreForBilling(f.getAbrechnungsSystem())) {
 									// TODO: Is this necessary, I never got here
 									System.out.println("...skip FindOpenCons 3 for case " + f.getAbrechnungsSystem());
 								} else { if (tSelection.find(b, true) == null) {

@@ -198,6 +198,7 @@ public class Messages {
 	public static String Leistungscodes_moveItemToRequiredData = ch.elexis.core.l10n.Messages.Leistungscodes_moveItemToRequiredData;
 	public static String Leistungscodes_moveItemUp = ch.elexis.core.l10n.Messages.Leistungscodes_moveItemUp;
 	public static String Leistungscodes_multiplier = ch.elexis.core.l10n.Messages.Leistungscodes_multiplier;
+	public static String Leistungscodes_useForBilling = ch.elexis.core.l10n.Messages.Leistungscodes_useForBilling;
 	public static String Leistungscodes_multiplierLabel = ch.elexis.core.l10n.Messages.Leistungscodes_multiplierLabel;
 	public static String Leistungscodes_mustSelectALine = ch.elexis.core.l10n.Messages.Leistungscodes_mustSelectALine;
 	public static String Leistungscodes_nameLabel = ch.elexis.core.l10n.Messages.Leistungscodes_nameLabel;
