@@ -458,11 +458,13 @@ public class KontaktUtil {
 			String salutation;
 			if (k.getGeschlecht().equals(Person.MALE)) {
 				salutation = ch.elexis.core.data.util.Messages.KontakteView_SalutationM;
-			} else // We do not use any default salutation for
+				salutation = salutation + ( multiline ? delimiter : StringTool.space);
+			} else // We do not use any default salutation f
 					// unknown sex to
 			// avoid errors!
 			if (k.getGeschlecht().equals(Person.FEMALE)) {
 				salutation = ch.elexis.core.data.util.Messages.KontakteView_SalutationF;
+				salutation = salutation + ( multiline ? delimiter : StringTool.space);
 			} else {
 				salutation = ""; //$NON-NLS-1$
 			}
@@ -470,7 +472,6 @@ public class KontaktUtil {
 	
 			String titel = k.get(Person.TITLE); // $NON-NLS-1$
 			if (!StringTool.isNothing(titel)) {
-				selectedPatInfosText.append(StringTool.space);
 				selectedPatInfosText.append(titel).append(StringTool.space);
 			}
 			if (!StringTool.isNothing(k.getVorname())) {

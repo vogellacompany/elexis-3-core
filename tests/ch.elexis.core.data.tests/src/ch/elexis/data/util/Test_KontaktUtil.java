@@ -79,6 +79,7 @@ public class Test_KontaktUtil extends AbstractPersistentObjectTest {
 	private static void genMustermann(){
 		p_Mustermann = new Patient("Mustermann", "Max", "1.1.2000", "m");
 		k_Mustermann = Kontakt.load(p_Mustermann.getId());
+		k_Mustermann.set("Titel", null);
 	}
 	
 	@Before
@@ -201,8 +202,11 @@ public class Test_KontaktUtil extends AbstractPersistentObjectTest {
 	@Test
 	public void testPatientPersonaliaMultiline(){
 		String res = KontaktUtil.getPersonalia(p_Baumgartner, true);
-		String multiline = expectedPersonalia.replaceAll(", ", StringTool.lf);
-		Assert.assertEquals(multiline, res);
+		String expected = expectedPersonalia.replaceAll(", ", StringTool.lf);
+		expected = 	expected.replace(
+			ch.elexis.core.data.util.Messages.KontakteView_SalutationM + StringTool.space,
+			ch.elexis.core.data.util.Messages.KontakteView_SalutationM + StringTool.lf);
+		Assert.assertEquals(expected, res);
 	}
 	
 	@Test
@@ -210,6 +214,20 @@ public class Test_KontaktUtil extends AbstractPersistentObjectTest {
 		String res = KontaktUtil.getPersonalia(p_Baumgartner, false);
 		String multiline = expectedPersonalia;
 		Assert.assertEquals(multiline, res);
+	}
+
+	@Test
+	public void testPatientPersonaliaOneLinerWithoutTitle(){
+		String res = KontaktUtil.getPersonalia(p_Mustermann, false);
+		String expected = "Herr Max Mustermann, 01.01.2000";
+		Assert.assertEquals(expected, res);
+	}
+
+	@Test
+	public void testPatientPersonaliaMultiLineWithoutTitle(){
+		String res = KontaktUtil.getPersonalia(p_Mustermann, true);
+		String expected = "Herr\nMax Mustermann\n01.01.2000";
+		Assert.assertEquals(expected, res);
 	}
 	
 }
