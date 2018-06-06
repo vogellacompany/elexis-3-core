@@ -219,14 +219,16 @@ public class Test_KontaktUtil extends AbstractPersistentObjectTest {
 	@Test
 	public void testPatientPersonaliaOneLinerWithoutTitle(){
 		String res = KontaktUtil.getPersonalia(p_Mustermann, false);
-		String expected = "Herr Max Mustermann, 01.01.2000";
+		String expected = ch.elexis.core.data.util.Messages.KontakteView_SalutationM +
+				StringTool.space + "Max Mustermann, 01.01.2000";
 		Assert.assertEquals(expected, res);
 	}
 
 	@Test
 	public void testPatientPersonaliaMultiLineWithoutTitle(){
 		String res = KontaktUtil.getPersonalia(p_Mustermann, true);
-		String expected = "Herr\nMax Mustermann\n01.01.2000";
+		String expected = ch.elexis.core.data.util.Messages.KontakteView_SalutationM +
+				StringTool.lf + "Max Mustermann\n01.01.2000";
 		Assert.assertEquals(expected, res);
 	}
 	
