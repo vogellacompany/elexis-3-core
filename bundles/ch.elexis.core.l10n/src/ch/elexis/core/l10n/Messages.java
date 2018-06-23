@@ -61,6 +61,7 @@ public class Messages extends NLS {
 	public static String BillSummary_receiver;
 	public static String BillSummary_state;
 	public static String BillSummary_total;
+	public static String ContactNotAvailable;
 	public static String DefaultOutputter_defaultOutputForCase;
 	public static String DefaultOutputter_useIdividualPlugins;
 	public static String ErstelleRnnCommand_BadCaseDefinition;
@@ -201,6 +202,7 @@ public class Messages extends NLS {
 	public static String RnActions_exportListMessage;
 	public static String RnActions_exportListAction;
 	public static String RnActions_exportListTooltip;
+	public static String RnActions_exportSaveHelp;
 	public static String RnActions_filterLIstTooltip;
 	public static String RnActions_filterListAction;
 	public static String RnActions_increadeReminderLevelTooltip;
@@ -414,6 +416,8 @@ public class Messages extends NLS {
 	public static String GlobalActions_ChangeMandator;
 	public static String GlobalActions_ChangeMandatorMessage;
 	public static String GlobalActions_Connection;
+	public static String GlobalActions_CloseCase;
+	public static String GlobalActions_CloseCase_SelectCloseDate;
 	public static String GlobalActions_Copy;
 	public static String GlobalActions_CouldntDeleteCaseExplanation;
 	public static String GlobalActions_CouldntDeleteCaseMessage;
@@ -1821,6 +1825,9 @@ public class Messages extends NLS {
 	public static String EditLabItem_title;
 	public static String EditLabItem_titleScriptEditor;
 	public static String EditLabItem_tooltipGroup;
+	public static String EditLabItem_OriginLaboratoryLabel;
+	public static String EditLabItem_OriginLaboratorySelectorCaption;
+	public static String EditLabItem_OriginLaboratorySelectorBody;
 	public static String EditLabResultDialog_errorNoResult;
 	public static String EditLabResultDialog_errorRefFemaleNotNumber;
 	public static String EditLabResultDialog_errorRefMaleNotNumber;
@@ -1980,6 +1987,7 @@ public class Messages extends NLS {
 	public static String HL7Parser_ErrorReading;
 	public static String HL7Parser_ExceptionWhileProcessingData;
 	public static String HL7Parser_LabAlreadyImported;
+	public static String HL7Parser_LabItem_Note_Name;
 	public static String HL7Parser_LabNotFound;
 	public static String HL7Parser_NoLab;
 	public static String HL7Parser_TheFile;
@@ -2563,6 +2571,7 @@ public class Messages extends NLS {
 	public static String TimeTool_yearsAgoFormat;
 	public static String TimeTool_yearsToFormat;
 	public static String LabResultDeleteAction_title;
+	public static String LabResultEvaluator_LabItemNoRefValue;
 	public static String SetPathologic;
 	public static String SetNonPathologic;
 	public static String TreeContentProvider_loadData;
@@ -2644,6 +2653,7 @@ public class Messages extends NLS {
 	public static String Visibility_ON_PATIENT_SELECTION;
 	public static String Visibility_POPUP_ON_LOGIN;
 	public static String Visibility_POPUP_ON_PATIENT_SELECTION;
+	public static String HL7LabImportRulesPreferencePage_lblLabImportRulesHeader_text;
 	public static String LabEvaluationRulesPreferencePage_lblLabImportRulesHeader_text;
 	public static String LabEvaluationRulesPreferencePage_btnUseParameterRefValOnMissingResRefVal_text;
 	public static String LabEvaluationRulesPreferencePage_grpAbsoluteResults_text;
@@ -2654,6 +2664,9 @@ public class Messages extends NLS {
 	public static String LabEvaluationRulesPreferencePage_btnCheckNonStringEqualRefValResValIsPathologicText_text;
 	public static String LabEvaluationRulesPreferencePage_lblWennKeineRegel_text;
 	public static String LabEvaluationRulesPreferencePage_lblResultatEndbestimmt_text;
+	public static String LabEvaluationRulesPreferencePage_lblLabNoPathFlagMeansNonPath_text;
+	public static String MPF_Rule_PathDescriptionText;
+	
 	static { // load message values from bundle file
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);
 	}
