@@ -12,8 +12,10 @@
 
 package ch.elexis.core.ui.views.rechnung;
 
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -611,8 +613,6 @@ public class RnDialogs {
 		Text tDirName;
 		// RnStatus[] states=RnStatus.Text;
 		private Logger log = LoggerFactory.getLogger(RnActions.class);
-		private String RnListExportFileName =
-				new SimpleDateFormat("'RnListExport-'yyyyMMddHHmmss'.csv'").format(new Date());
 		
 		public RnListeExportDialog(Shell shell, List<Rechnung> rechnungen){
 			super(shell);
@@ -620,6 +620,14 @@ public class RnDialogs {
 			rnn = new ArrayList<Rechnung>();
 			for (Rechnung rn : rechnungen) {
 				rnn.add(rn);
+			}
+		}
+		
+		private String getRnListExportFileName(){
+			if (CoreHub.localCfg.get("rechnung/RnListExportDirname_tsv", false)) {
+				return new SimpleDateFormat("'RnListExport-'yyyyMMddHHmmss'.txt'").format(new Date());
+			} else {
+				return new SimpleDateFormat("'RnListExport-'yyyyMMddHHmmss'.csv'").format(new Date());
 			}
 		}
 		
@@ -633,8 +641,22 @@ public class RnDialogs {
 			//TODO: Auf Konstante umstellen, dann braucht's allerdings den Austausch weiterer Module bei Installation!!!
 			
 			Group cSaveCopy = new Group(ret, SWT.NONE);
-			cSaveCopy.setText(String.format(Messages.RnActions_exportSaveHelp, RnListExportFileName));
+			cSaveCopy.setText(String.format(Messages.RnActions_exportSaveHelp, getRnListExportFileName()));
 			cSaveCopy.setLayout(new GridLayout(2, false));
+
+			Button bSaveFileAs = new Button(cSaveCopy, SWT.CHECK);
+			bSaveFileAs.setText(Messages.RnActions_exportSaveOption);
+			bSaveFileAs.setToolTipText(Messages.RnActions_exportSaveOptionTooltip);
+			bSaveFileAs.setLayoutData(SWTHelper.getFillGridData(1, true, 1, false));
+			bSaveFileAs.setSelection(CoreHub.localCfg.get("rechnung/RnListExportDirname_tsv", true));
+			bSaveFileAs.addSelectionListener(new SelectionAdapter() {
+				@Override
+				public void widgetSelected(SelectionEvent e){
+					CoreHub.localCfg.set("rechnung/RnListExportDirname_tsv", bSaveFileAs.getSelection());
+					cSaveCopy.setText(String.format(Messages.RnActions_exportSaveHelp, getRnListExportFileName()));
+				}
+			});
+
 			Button bSelectFile = new Button(cSaveCopy, SWT.PUSH);
 			bSelectFile.setText(Messages.RnActions_exportListDirName);
 			bSelectFile.setLayoutData(SWTHelper.getFillGridData(2, false, 1, false));
@@ -675,13 +697,18 @@ public class RnDialogs {
 			super.okPressed();
 			CSVWriteTable();
 		}
-		
+
 		public void CSVWriteTable(){
-			String pathToSave = RnListExportDirname + "/" + RnListExportFileName;
+			String pathToSave = RnListExportDirname + "/" + getRnListExportFileName();
 			CSVWriter csv = null;
 			int nrLines = 0;
 			try {
-				csv = new CSVWriter(new FileWriter(pathToSave));
+				if (CoreHub.localCfg.get("rechnung/RnListExportDirname_tsv", false)) {
+					// use  Windows Character set separate field by tab
+					csv = new CSVWriter(new OutputStreamWriter(new FileOutputStream(pathToSave), "Cp1252"), '\t');
+				} else { // use default
+					csv = new CSVWriter(new OutputStreamWriter(new FileOutputStream(pathToSave)));
+				}
 				// @formatter:off
 					String[] header = new String[] {
 						"Aktion?", // line 0 
@@ -725,7 +752,7 @@ public class RnDialogs {
 					Fall fall = rn.getFall();
 					Patient p = fall.getPatient();
 					String[] line = new String[header.length];
-					line[0] = ""; //201512210402js: Leere Spalte zum Eintragen der gewünschten Aktion.
+					line[0] = null; //201512210402js: Leere Spalte zum Eintragen der gewünschten Aktion.
 					line[1] = rn.getNr();
 					line[2] = rn.getDatumRn();
 					line[3] = rn.getDatumVon();

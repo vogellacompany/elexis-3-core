@@ -160,6 +160,8 @@ public class Messages {
 	public static String RnActions_exportListAction = ch.elexis.core.l10n.Messages.RnActions_exportListAction;
 	public static String RnActions_exportListTooltip = ch.elexis.core.l10n.Messages.RnActions_exportListTooltip;
 	public static String RnActions_exportSaveHelp = ch.elexis.core.l10n.Messages.RnActions_exportSaveHelp;
+	public static String RnActions_exportSaveOption = ch.elexis.core.l10n.Messages.RnActions_exportSaveOption;
+	public static String RnActions_exportSaveOptionTooltip = ch.elexis.core.l10n.Messages.RnActions_exportSaveOptionTooltip;
 	public static String RnActions_filterLIstTooltip = ch.elexis.core.l10n.Messages.RnActions_filterLIstTooltip;
 	public static String RnActions_filterListAction = ch.elexis.core.l10n.Messages.RnActions_filterListAction;
 	public static String RnActions_increadeReminderLevelTooltip = ch.elexis.core.l10n.Messages.RnActions_increadeReminderLevelTooltip;

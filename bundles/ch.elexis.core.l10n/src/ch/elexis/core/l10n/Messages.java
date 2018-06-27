@@ -203,6 +203,8 @@ public class Messages extends NLS {
 	public static String RnActions_exportListAction;
 	public static String RnActions_exportListTooltip;
 	public static String RnActions_exportSaveHelp;
+	public static String RnActions_exportSaveOption;
+	public static String RnActions_exportSaveOptionTooltip;
 	public static String RnActions_filterLIstTooltip;
 	public static String RnActions_filterListAction;
 	public static String RnActions_increadeReminderLevelTooltip;
