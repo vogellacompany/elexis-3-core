@@ -599,7 +599,7 @@ public class KontaktUtil {
 	public static String getPostAnschriftPhoneFaxEmail(Kontakt k, boolean multiline, boolean include_mobile){
 		
 		StringBuffer thisAddress = new StringBuffer();
-		String lf = System.getProperty("line.separator");
+		String tab = "\t";
 		
 		// getPostAnschrift() already returns a line separator after the address;
 		// processing of the multiline flag is implemented further below as well,
@@ -612,45 +612,45 @@ public class KontaktUtil {
 		// Damit die Telefonnummer in dem Fall nicht direkt am Ort klebt,
 		// muss man ihn hier wieder ergänzen. Aber vorher ausschliessen, dass
 		// PostAnschrift nicht leer ist, oder dass doch schon ein lineSeparator dran hängt.
-		String anschrift = k.getPostAnschrift(true).trim();
+		String anschrift = k.getPostAnschrift(true).trim().replaceAll(StringTool.lf, tab);
 		if (!multiline) {
 			// In this case we must replace "Herr," by "Herr"
-			anschrift = anschrift.replaceFirst(lf, StringTool.space);
+			anschrift = anschrift.replaceFirst(tab, StringTool.space);
 		}
 		thisAddress.append(anschrift);
 		
 		String thisAddressFLD_PHONE1 = (String) k.get(Kontakt.FLD_PHONE1);
 		if (!StringTool.isNothing(thisAddressFLD_PHONE1)) {
-			thisAddress.append(lf).append(thisAddressFLD_PHONE1);
+			thisAddress.append(tab).append(thisAddressFLD_PHONE1);
 		}
 		
 		String thisAddressFLD_PHONE2 = (String) k.get(Kontakt.FLD_PHONE2);
 		if (!StringTool.isNothing(thisAddressFLD_PHONE2)) {
-			thisAddress.append(lf).append(thisAddressFLD_PHONE2);
+			thisAddress.append(tab).append(thisAddressFLD_PHONE2);
 		}
 			
 		if (include_mobile) {
 			String thisAddressFLD_MOBILEPHONE = (String) k.get(Kontakt.FLD_MOBILEPHONE);
 			if (!StringTool.isNothing(thisAddressFLD_MOBILEPHONE)) {
-				thisAddress.append(lf).append(thisAddressFLD_MOBILEPHONE);
+				thisAddress.append(tab).append(thisAddressFLD_MOBILEPHONE);
 			}
 		}
 		
 		String thisAddressFLD_FAX = (String) k.get(Kontakt.FLD_FAX);
 		if (!StringTool.isNothing(thisAddressFLD_FAX)) {
-			thisAddress.append(lf).append("Fax:" + StringTool.space + thisAddressFLD_FAX);
+			thisAddress.append(tab).append("Fax:" + StringTool.space + thisAddressFLD_FAX);
 		}
 		String thisAddressFLD_E_MAIL = (String) k.get(Kontakt.FLD_E_MAIL);
 		if (!StringTool.isNothing(thisAddressFLD_E_MAIL)) {
-			thisAddress.append(lf).append(thisAddressFLD_E_MAIL);
+			thisAddress.append(tab).append(thisAddressFLD_E_MAIL);
 		}
 		String thisAddressFLD_WEBSITE = (String) k.get(Kontakt.FLD_WEBSITE);
 		if (!StringTool.isNothing(thisAddressFLD_WEBSITE)) {
-			thisAddress.append(lf).append(thisAddressFLD_WEBSITE);
+			thisAddress.append(tab).append(thisAddressFLD_WEBSITE);
 		}
 		
 		String an = thisAddress.toString();
-		an = an.replaceAll("[\\r\\n]\\n", StringTool.lf); //$NON-NLS-1$
-		return multiline == true ? an : an.replaceAll("\\n", "," + StringTool.space); //$NON-NLS-1$
+		String lf = System.getProperty("line.separator");
+		return multiline == true ?  an.replaceAll(tab, lf) : an.replaceAll(tab, "," + StringTool.space); //$NON-NLS-1$
 	}
 	}
