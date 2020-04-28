@@ -1,3 +1,4 @@
+Automatic-Module-Name: ch.elexis.core.ui.importer.div.native64
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Native64 bit libraries for importer.div

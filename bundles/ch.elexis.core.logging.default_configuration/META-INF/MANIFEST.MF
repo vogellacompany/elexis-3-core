@@ -1,3 +1,4 @@
+Automatic-Module-Name: ch.elexis.core.logging.default_configuration
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Default_configuration

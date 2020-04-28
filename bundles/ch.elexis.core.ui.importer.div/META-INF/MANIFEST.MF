@@ -1,3 +1,4 @@
+Automatic-Module-Name: ch.elexis.core.ui.importer.div
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Import für verschiedene Dateien

@@ -1,3 +1,4 @@
+Automatic-Module-Name: ch.elexis.core.findings.test
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Findings Test

@@ -1,3 +1,4 @@
+Automatic-Module-Name: ch.elexis.core.hl7.v2x.tests
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: HL7 Import Test

@@ -1,3 +1,4 @@
+Automatic-Module-Name: ch.elexis.core.hl7.v2x
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Elexis HL7 v2.x Import/Export

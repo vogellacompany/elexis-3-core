@@ -1,3 +1,4 @@
+Automatic-Module-Name: ch.elexis.core.mail.ui
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Mail Ui
